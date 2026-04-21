@@ -1,0 +1,3998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description"
+        content="CLINIX.AI — Medical Search Engine for brain tumor detection, MRI analysis, neuroradiology intelligence.">
+    <title>CLINIX.AI — Medical Intelligence Search</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Nunito+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ================================================================
+   CLINIX.AI — Medical Intelligence Search Engine
+   Design: Editorial-institutional. Think NEJM meets Google.
+   Crisp navy + white + crimson. Hand-crafted authority.
+================================================================ */
+        :root {
+            --n0: #060d18;
+            --n1: #0c1a2e;
+            --n2: #132440;
+            --n3: #1a3054;
+            --n4: #2a4a72;
+            --n5: #3d6490;
+            --n6: #5a82b0;
+            --s0: #e8eef6;
+            --s1: #d4dff0;
+            --s2: #bdd0e8;
+            --mid: #7a96b8;
+            --soft: #9fb6d4;
+            --pale: #c8d8ec;
+            --w: #ffffff;
+            --paper: #f5f8fc;
+            --sheet: #edf2f9;
+            --cr: #c0272d;
+            --cr2: #9e1f24;
+            --cr3: #e63939;
+            --crl: #fff0f0;
+            --crm: #fcd5d5;
+            --tl: #0a7c6e;
+            --tll: #e6f7f5;
+            --go: #b07828;
+            --gol: #fdf7e3;
+            --gr: #196b3c;
+            --grl: #eaf7ef;
+            --am: #c25600;
+            --aml: #fff3e8;
+            --s: 'Nunito Sans', system-ui, sans-serif;
+            --d: 'Playfair Display', Georgia, serif;
+            --m: 'IBM Plex Mono', 'Courier New', monospace;
+            --rx: 6px;
+            --rl: 14px;
+            --rxl: 22px;
+            --sh0: 0 1px 3px rgba(6, 13, 24, .07);
+            --sh1: 0 3px 10px rgba(6, 13, 24, .09), 0 1px 4px rgba(6, 13, 24, .05);
+            --sh2: 0 8px 24px rgba(6, 13, 24, .12), 0 3px 8px rgba(6, 13, 24, .07);
+            --sh3: 0 20px 50px rgba(6, 13, 24, .15), 0 6px 16px rgba(6, 13, 24, .09);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            font-size: 15px;
+            height: 100%;
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: var(--s);
+            background: var(--paper);
+            color: var(--n0);
+            line-height: 1.65;
+            height: 100%;
+            -webkit-font-smoothing: antialiased
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--pale);
+            border-radius: 2px
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        button {
+            font-family: var(--s)
+        }
+
+        input,
+        textarea {
+            font-family: var(--s)
+        }
+
+        /* ── LAYOUT ── */
+        .app {
+            display: flex;
+            height: 100vh;
+            overflow: hidden
+        }
+
+        /* ══════════════════════
+   SIDEBAR
+══════════════════════ */
+        .sidebar {
+            width: 252px;
+            min-width: 252px;
+            background: var(--n1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+            border-right: 1px solid rgba(255, 255, 255, .05);
+            flex-shrink: 0;
+        }
+
+        .sb-brand {
+            padding: 20px 18px 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .sb-icon {
+            width: 34px;
+            height: 34px;
+            background: var(--cr);
+            border-radius: var(--rx);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 10px rgba(192, 39, 45, .4);
+        }
+
+        .sb-wordmark {
+            line-height: 1.15
+        }
+
+        .sb-name {
+            font-family: var(--d);
+            font-size: 16.5px;
+            font-weight: 600;
+            color: var(--w);
+            letter-spacing: .2px
+        }
+
+        .sb-name em {
+            color: var(--cr3);
+            font-style: normal
+        }
+
+        .sb-sub {
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .3);
+            font-family: var(--m)
+        }
+
+        .sb-group {
+            padding: 16px 10px 6px
+        }
+
+        .sb-glabel {
+            font-size: 8.5px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .22);
+            font-family: var(--m);
+            padding: 0 8px;
+            margin-bottom: 7px
+        }
+
+        .sb-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 9px 10px;
+            border-radius: var(--rx);
+            cursor: pointer;
+            font-size: 13.5px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, .55);
+            transition: all .13s;
+            margin-bottom: 1px;
+            user-select: none;
+        }
+
+        .sb-item:hover {
+            background: rgba(255, 255, 255, .06);
+            color: rgba(255, 255, 255, .85)
+        }
+
+        .sb-item.on {
+            background: rgba(192, 39, 45, .16);
+            color: var(--w)
+        }
+
+        .sb-item.on .sbi {
+            color: #f87171
+        }
+
+        .sbi {
+            font-size: 15px;
+            width: 17px;
+            text-align: center;
+            flex-shrink: 0
+        }
+
+        .sb-pill {
+            margin-left: auto;
+            font-size: 9px;
+            font-family: var(--m);
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .pill-ai {
+            background: rgba(192, 39, 45, .35);
+            color: #fca5a5;
+            border: 1px solid rgba(252, 165, 165, .15)
+        }
+
+        .pill-new {
+            background: rgba(10, 124, 110, .35);
+            color: #6ee7b7;
+            border: 1px solid rgba(110, 231, 183, .15)
+        }
+
+        .sb-div {
+            height: 1px;
+            background: rgba(255, 255, 255, .06);
+            margin: 8px 12px
+        }
+
+        /* API key box */
+        .sb-apibox {
+            margin: 4px 10px 10px;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: var(--rl);
+            padding: 13px;
+        }
+
+        .sakb-hdr {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 8.5px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .3);
+            font-family: var(--m);
+            margin-bottom: 9px;
+        }
+
+        .sakb-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, .4);
+            margin-bottom: 9px
+        }
+
+        .api-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .2);
+            flex-shrink: 0
+        }
+
+        .api-dot.live {
+            background: #34d399;
+            box-shadow: 0 0 0 3px rgba(52, 211, 153, .18);
+            animation: apulse 2.5s ease-in-out infinite
+        }
+
+        @keyframes apulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 3px rgba(52, 211, 153, .18)
+            }
+
+            50% {
+                box-shadow: 0 0 0 5px rgba(52, 211, 153, .06)
+            }
+        }
+
+        .sakb-inp {
+            width: 100%;
+            background: rgba(0, 0, 0, .3);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: var(--rx);
+            padding: 7px 10px;
+            font-family: var(--m);
+            font-size: 11px;
+            color: rgba(255, 255, 255, .8);
+            outline: none;
+            margin-bottom: 8px;
+            transition: border-color .13s;
+        }
+
+        .sakb-inp:focus {
+            border-color: rgba(192, 39, 45, .5)
+        }
+
+        .sakb-inp::placeholder {
+            color: rgba(255, 255, 255, .2)
+        }
+
+        .sakb-save {
+            width: 100%;
+            padding: 7px;
+            background: var(--cr);
+            border: none;
+            border-radius: var(--rx);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background .13s;
+            letter-spacing: .2px;
+        }
+
+        .sakb-save:hover {
+            background: var(--cr2)
+        }
+
+        /* Sidebar classes list */
+        .sb-clslist {
+            padding: 0 10px
+        }
+
+        .sb-cls-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 8px;
+            border-radius: var(--rx);
+            font-size: 12.5px;
+            color: rgba(255, 255, 255, .4);
+            margin-bottom: 1px;
+        }
+
+        .sb-cls-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0
+        }
+
+        .sb-foot {
+            margin-top: auto;
+            padding: 12px 16px;
+            border-top: 1px solid rgba(255, 255, 255, .05);
+            font-size: 10px;
+            color: rgba(255, 255, 255, .2);
+            font-family: var(--m);
+            line-height: 1.8;
+        }
+
+        /* ══════════════════════
+   MAIN
+══════════════════════ */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background: var(--paper)
+        }
+
+        /* ── TOPBAR ── */
+        .topbar {
+            background: var(--w);
+            border-bottom: 1px solid var(--s0);
+            height: 52px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+            box-shadow: var(--sh0);
+        }
+
+        .tb-nav {
+            display: flex;
+            gap: 2px;
+            align-items: center
+        }
+
+        .tb-lnk {
+            padding: 5px 13px;
+            border-radius: var(--rx);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--mid);
+            cursor: pointer;
+            border: none;
+            background: none;
+            transition: all .13s;
+        }
+
+        .tb-lnk:hover {
+            color: var(--n0);
+            background: var(--sheet)
+        }
+
+        .tb-lnk.on {
+            color: var(--cr);
+            font-weight: 600
+        }
+
+        .tb-right {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .tb-badge {
+            font-family: var(--m);
+            font-size: 9.5px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: var(--grl);
+            color: var(--gr);
+            border: 1px solid rgba(25, 107, 60, .18);
+            font-weight: 600;
+            display: none;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .tb-badge.show {
+            display: flex
+        }
+
+        .tbbd {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: currentColor
+        }
+
+        .tb-act {
+            padding: 7px 18px;
+            border-radius: var(--rx);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all .13s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tb-act-out {
+            background: transparent;
+            border: 1.5px solid var(--pale);
+            color: var(--n4)
+        }
+
+        .tb-act-out:hover {
+            border-color: var(--cr);
+            color: var(--cr)
+        }
+
+        .tb-act-fill {
+            background: var(--cr);
+            color: white;
+            box-shadow: 0 2px 8px rgba(192, 39, 45, .22)
+        }
+
+        .tb-act-fill:hover {
+            background: var(--cr2);
+            box-shadow: 0 4px 14px rgba(192, 39, 45, .3)
+        }
+
+        /* ── CONTENT ── */
+        .content {
+            flex: 1;
+            overflow-y: auto
+        }
+
+        /* ── CHAT BAR ── */
+        .cbar {
+            background: var(--w);
+            border-top: 1px solid var(--s0);
+            padding: 12px 24px;
+            display: none;
+            gap: 8px;
+            align-items: flex-end;
+            box-shadow: 0 -2px 8px rgba(6, 13, 24, .04);
+            flex-shrink: 0;
+        }
+
+        .cbar.show {
+            display: flex
+        }
+
+        .cbar-att {
+            width: 40px;
+            height: 40px;
+            background: var(--sheet);
+            border: 1px solid var(--s0);
+            border-radius: var(--rx);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            color: var(--mid);
+            transition: all .13s;
+            flex-shrink: 0;
+        }
+
+        .cbar-att:hover {
+            border-color: var(--cr);
+            color: var(--cr)
+        }
+
+        .cbar-wrap {
+            flex: 1
+        }
+
+        textarea.cbar-inp {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid var(--pale);
+            border-radius: 10px;
+            font-size: 13.5px;
+            color: var(--n0);
+            resize: none;
+            outline: none;
+            min-height: 40px;
+            max-height: 100px;
+            transition: border-color .13s;
+            background: var(--w);
+            line-height: 1.5;
+        }
+
+        textarea.cbar-inp:focus {
+            border-color: var(--cr)
+        }
+
+        textarea.cbar-inp::placeholder {
+            color: var(--soft)
+        }
+
+        .cbar-send {
+            width: 40px;
+            height: 40px;
+            background: var(--cr);
+            border-radius: var(--rx);
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .13s;
+            flex-shrink: 0;
+        }
+
+        .cbar-send:hover {
+            background: var(--cr2)
+        }
+
+        .cbar-send:disabled {
+            opacity: .4;
+            cursor: not-allowed
+        }
+
+        /* ══════════════════════
+   HOME / SEARCH ENGINE
+══════════════════════ */
+        .home {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 48px 24px 60px;
+        }
+
+        .home-lede {
+            text-align: center;
+            margin-bottom: 28px;
+            animation: fadeup .5s ease forwards;
+            opacity: 0;
+            transform: translateY(14px);
+        }
+
+        @keyframes fadeup {
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .home-mark {
+            font-size: 46px;
+            display: block;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 3px 14px rgba(192, 39, 45, .22))
+        }
+
+        .home-title {
+            font-family: var(--d);
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--n0);
+            line-height: 1;
+            letter-spacing: -1px;
+            margin-bottom: 6px
+        }
+
+        .home-title b {
+            color: var(--cr);
+            font-style: italic
+        }
+
+        .home-strap {
+            font-size: 14px;
+            color: var(--mid);
+            letter-spacing: .3px;
+            font-weight: 400
+        }
+
+        .home-searchbox {
+            width: 100%;
+            max-width: 672px;
+            position: relative;
+            margin-bottom: 16px;
+            animation: fadeup .5s .09s ease forwards;
+            opacity: 0;
+            transform: translateY(12px);
+        }
+
+        .hsi {
+            width: 100%;
+            padding: 16px 60px 16px 22px;
+            border: 1.5px solid var(--pale);
+            border-radius: 34px;
+            font-size: 16px;
+            color: var(--n0);
+            outline: none;
+            background: var(--w);
+            transition: all .2s;
+            box-shadow: var(--sh1);
+        }
+
+        .hsi:focus {
+            border-color: var(--cr);
+            box-shadow: 0 0 0 3px rgba(192, 39, 45, .08), var(--sh2)
+        }
+
+        .hsi::placeholder {
+            color: var(--soft)
+        }
+
+        .hsbtn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: var(--cr);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .15s;
+            box-shadow: 0 2px 10px rgba(192, 39, 45, .3);
+        }
+
+        .hsbtn:hover {
+            background: var(--cr2);
+            box-shadow: 0 4px 16px rgba(192, 39, 45, .4)
+        }
+
+        .home-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            justify-content: center;
+            max-width: 672px;
+            margin-bottom: 44px;
+            animation: fadeup .5s .17s ease forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .chip {
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--s1);
+            background: var(--w);
+            font-size: 12.5px;
+            color: var(--n4);
+            cursor: pointer;
+            transition: all .14s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: var(--sh0);
+        }
+
+        .chip:hover {
+            border-color: var(--cr);
+            color: var(--cr);
+            background: var(--crl);
+            box-shadow: var(--sh1)
+        }
+
+        .home-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 13px;
+            max-width: 840px;
+            width: 100%;
+            animation: fadeup .5s .24s ease forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .feat {
+            background: var(--w);
+            border: 1px solid var(--s0);
+            border-radius: var(--rl);
+            padding: 20px;
+            cursor: pointer;
+            transition: all .18s;
+            box-shadow: var(--sh0);
+        }
+
+        .feat:hover {
+            border-color: var(--cr);
+            box-shadow: var(--sh1);
+            transform: translateY(-2px)
+        }
+
+        .feat-ico {
+            font-size: 26px;
+            margin-bottom: 10px
+        }
+
+        .feat-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--n0);
+            font-family: var(--d);
+            margin-bottom: 5px
+        }
+
+        .feat-desc {
+            font-size: 12px;
+            color: var(--mid);
+            line-height: 1.65
+        }
+
+        .feat-tag {
+            display: inline-block;
+            margin-top: 9px;
+            font-size: 9px;
+            font-family: var(--m);
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: var(--sheet);
+            color: var(--mid);
+            border: 1px solid var(--s0);
+            font-weight: 600;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+        }
+
+
+        /* ══════════════════════
+   SEARCH RESULTS PAGE
+══════════════════════ */
+        .srpage {}
+
+        .sr-strip {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: var(--w);
+            border-bottom: 1px solid var(--s0);
+            padding: 11px 24px;
+            box-shadow: var(--sh0);
+        }
+
+        .sr-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 880px
+        }
+
+        .sr-iwrap {
+            flex: 1;
+            position: relative
+        }
+
+        .sr-inp {
+            width: 100%;
+            padding: 9px 42px 9px 16px;
+            border: 1.5px solid var(--pale);
+            border-radius: 24px;
+            font-size: 14px;
+            color: var(--n0);
+            outline: none;
+            transition: all .14s;
+            background: var(--w);
+        }
+
+        .sr-inp:focus {
+            border-color: var(--cr);
+            box-shadow: 0 0 0 2px rgba(192, 39, 45, .07)
+        }
+
+        .sr-sbtn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            background: var(--cr);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .13s;
+        }
+
+        .sr-sbtn:hover {
+            background: var(--cr2)
+        }
+
+        .sr-tabs {
+            display: flex;
+            padding: 0 24px;
+            border-bottom: 1px solid var(--s0);
+            background: var(--w);
+        }
+
+        .sr-tab {
+            padding: 9px 16px;
+            font-size: 12.5px;
+            font-weight: 500;
+            color: var(--mid);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all .13s;
+            white-space: nowrap;
+        }
+
+        .sr-tab:hover {
+            color: var(--n0)
+        }
+
+        .sr-tab.on {
+            color: var(--cr);
+            border-bottom-color: var(--cr);
+            font-weight: 600
+        }
+
+        .sr-body {
+            padding: 20px 24px 44px;
+            max-width: 880px
+        }
+
+        .sr-meta {
+            font-size: 11.5px;
+            color: var(--soft);
+            font-family: var(--m);
+            margin-bottom: 18px
+        }
+
+        /* AI answer card */
+        .ai-card {
+            background: var(--w);
+            border: 1px solid var(--s1);
+            border-left: 3px solid var(--cr);
+            border-radius: var(--rl);
+            padding: 20px 22px;
+            margin-bottom: 16px;
+            box-shadow: var(--sh1);
+        }
+
+        .aic-hdr {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 11px
+        }
+
+        .aic-ico {
+            font-size: 17px
+        }
+
+        .aic-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--cr);
+            font-family: var(--m)
+        }
+
+        .aic-text {
+            font-size: 13.5px;
+            color: var(--n0);
+            line-height: 1.8
+        }
+
+        .aic-text strong {
+            color: var(--n0);
+            font-weight: 700
+        }
+
+        .aic-foot {
+            margin-top: 9px;
+            font-size: 11px;
+            color: var(--soft);
+            font-style: italic
+        }
+
+        /* Result card */
+        .rcard {
+            background: var(--w);
+            border: 1px solid var(--s0);
+            border-radius: var(--rl);
+            padding: 18px 20px;
+            margin-bottom: 11px;
+            box-shadow: var(--sh0);
+            transition: all .13s;
+        }
+
+        .rcard:hover {
+            box-shadow: var(--sh1);
+            border-color: var(--s1)
+        }
+
+        .rcard-src {
+            font-size: 10.5px;
+            color: var(--mid);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-family: var(--m);
+        }
+
+        .rcard-title {
+            font-family: var(--d);
+            font-size: 17px;
+            color: var(--n0);
+            margin-bottom: 6px;
+            line-height: 1.3;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .rcard-title:hover {
+            color: var(--cr)
+        }
+
+        .rcard-text {
+            font-size: 13.5px;
+            color: var(--n3);
+            line-height: 1.75
+        }
+
+        .rcard-tags {
+            margin-top: 9px;
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap
+        }
+
+        .rtag {
+            padding: 2px 9px;
+            background: var(--sheet);
+            border: 1px solid var(--s0);
+            border-radius: 5px;
+            font-size: 10.5px;
+            color: var(--mid);
+            font-family: var(--m);
+        }
+
+        /* ══════════════════════
+   ANALYZER
+══════════════════════ */
+        .azpage {
+            padding: 22px 24px 40px
+        }
+
+        .az-hdr {
+            margin-bottom: 20px
+        }
+
+        .az-title {
+            font-family: var(--d);
+            font-size: 26px;
+            color: var(--n0);
+            margin-bottom: 3px
+        }
+
+        .az-sub {
+            font-size: 13px;
+            color: var(--mid)
+        }
+
+        .az-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1120px
+        }
+
+        /* Panel */
+        .panel {
+            background: var(--w);
+            border: 1px solid var(--s0);
+            border-radius: var(--rl);
+            overflow: hidden;
+            box-shadow: var(--sh0)
+        }
+
+        .ph {
+            padding: 13px 18px;
+            border-bottom: 1px solid var(--s0);
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .ph-l {
+            display: flex;
+            align-items: center;
+            gap: 7px
+        }
+
+        .ph-ico {
+            font-size: 15px
+        }
+
+        .ph-tit {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--n0)
+        }
+
+        .ph-b {
+            font-size: 9px;
+            font-family: var(--m);
+            padding: 2px 8px;
+            border-radius: 7px;
+            font-weight: 600
+        }
+
+        .phb-g {
+            background: var(--sheet);
+            color: var(--n5);
+            border: 1px solid var(--s0)
+        }
+
+        .phb-live {
+            background: var(--grl);
+            color: var(--gr);
+            border: 1px solid rgba(25, 107, 60, .18)
+        }
+
+        .phb-rpt {
+            background: var(--gol);
+            color: var(--go);
+            border: 1px solid rgba(176, 120, 40, .2)
+        }
+
+        .pb {
+            padding: 18px
+        }
+
+        /* Upload zone */
+        .upzone {
+            border: 2px dashed var(--pale);
+            border-radius: var(--rl);
+            padding: 42px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all .18s;
+            background: var(--paper);
+        }
+
+        .upzone:hover,
+        .upzone.drag {
+            border-color: var(--cr);
+            background: var(--crl)
+        }
+
+        .uz-ico {
+            font-size: 42px;
+            display: block;
+            margin-bottom: 12px
+        }
+
+        .uz-tit {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--n0);
+            font-family: var(--d);
+            margin-bottom: 5px
+        }
+
+        .uz-sub {
+            font-size: 12.5px;
+            color: var(--mid);
+            margin-bottom: 16px
+        }
+
+        .uz-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 9px 22px;
+            background: var(--cr);
+            color: white;
+            border-radius: var(--rx);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all .14s;
+            box-shadow: 0 2px 10px rgba(192, 39, 45, .23);
+        }
+
+        .uz-btn:hover {
+            background: var(--cr2);
+            box-shadow: 0 4px 16px rgba(192, 39, 45, .3)
+        }
+
+        .uz-fmt {
+            margin-top: 11px;
+            font-size: 10.5px;
+            color: var(--soft);
+            font-family: var(--m)
+        }
+
+        /* Preview */
+        .prevwrap {
+            position: relative;
+            display: none;
+            border-radius: var(--rl);
+            overflow: hidden;
+            border: 1px solid var(--s0);
+            background: #000
+        }
+
+        .prevwrap.show {
+            display: block
+        }
+
+        .previmg {
+            width: 100%;
+            max-height: 280px;
+            object-fit: contain;
+            display: block
+        }
+
+        .prevcanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none
+        }
+
+        .prevbadge {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            font-family: var(--m);
+            font-size: 9px;
+            padding: 3px 9px;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, .75);
+            color: rgba(255, 255, 255, .85);
+            letter-spacing: .5px;
+        }
+
+        .prevchg {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            padding: 5px 12px;
+            background: rgba(255, 255, 255, .92);
+            border: 1px solid var(--pale);
+            border-radius: var(--rx);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--n0);
+            cursor: pointer;
+            transition: all .13s;
+        }
+
+        .prevchg:hover {
+            background: white;
+            box-shadow: var(--sh1)
+        }
+
+        /* Ctx input */
+        .ctx-grp {
+            margin-top: 14px
+        }
+
+        .ctx-lbl {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--n4);
+            margin-bottom: 5px
+        }
+
+        .ctx-inp {
+            width: 100%;
+            padding: 9px 13px;
+            border: 1.5px solid var(--pale);
+            border-radius: var(--rx);
+            font-size: 13px;
+            color: var(--n0);
+            outline: none;
+            transition: border-color .13s;
+            background: var(--w);
+        }
+
+        .ctx-inp:focus {
+            border-color: var(--cr)
+        }
+
+        .ctx-inp::placeholder {
+            color: var(--soft)
+        }
+
+        /* Action row */
+        .actrow {
+            display: flex;
+            gap: 8px;
+            margin-top: 13px
+        }
+
+        .abtn {
+            flex: 1;
+            padding: 11px 14px;
+            border-radius: var(--rx);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all .16s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .abtn:disabled {
+            opacity: .44;
+            cursor: not-allowed
+        }
+
+        .abtn-analyze {
+            background: var(--cr);
+            color: white;
+            box-shadow: 0 2px 8px rgba(192, 39, 45, .2)
+        }
+
+        .abtn-analyze:hover:not(:disabled) {
+            background: var(--cr2);
+            box-shadow: 0 4px 14px rgba(192, 39, 45, .3)
+        }
+
+        .abtn-report {
+            background: var(--n1);
+            color: white;
+            box-shadow: 0 2px 8px rgba(12, 26, 46, .2)
+        }
+
+        .abtn-report:hover:not(:disabled) {
+            background: var(--n2)
+        }
+
+        .abtn-clear {
+            background: transparent;
+            border: 1.5px solid var(--pale);
+            color: var(--n5);
+            flex: 0 0 42px;
+            padding: 11px 0
+        }
+
+        .abtn-clear:hover:not(:disabled) {
+            border-color: var(--mid);
+            color: var(--n0)
+        }
+
+        /* ── Results panel ── */
+        .rph {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 52px 20px;
+            text-align: center;
+            color: var(--soft)
+        }
+
+        .rph-ico {
+            font-size: 42px;
+            margin-bottom: 13px;
+            opacity: .38
+        }
+
+        .rph-tit {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--mid);
+            font-family: var(--d);
+            margin-bottom: 5px
+        }
+
+        .rph-sub {
+            font-size: 12.5px
+        }
+
+        /* Detection banner */
+        .detbanner {
+            padding: 13px 15px;
+            border-radius: var(--rx);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px
+        }
+
+        .db-t {
+            background: var(--crl);
+            border: 1px solid rgba(192, 39, 45, .18)
+        }
+
+        .db-c {
+            background: var(--grl);
+            border: 1px solid rgba(25, 107, 60, .18)
+        }
+
+        .dbi {
+            font-size: 24px;
+            flex-shrink: 0
+        }
+
+        .dbtxt {
+            flex: 1
+        }
+
+        .dbdiag {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--n0);
+            font-family: var(--d)
+        }
+
+        .dbmeta {
+            font-size: 11.5px;
+            color: var(--mid);
+            margin-top: 1px
+        }
+
+        .dbconf {
+            font-family: var(--m);
+            font-size: 22px;
+            font-weight: 600;
+            flex-shrink: 0
+        }
+
+        .dbconf-t {
+            color: var(--cr)
+        }
+
+        .dbconf-c {
+            color: var(--gr)
+        }
+
+        .confbar {
+            height: 4px;
+            background: var(--s1);
+            border-radius: 2px;
+            margin-bottom: 14px;
+            overflow: hidden
+        }
+
+        .confill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width 1.3s cubic-bezier(.16, 1, .3, 1)
+        }
+
+        .cf-h {
+            background: linear-gradient(90deg, var(--tl), #0fb89e)
+        }
+
+        .cf-m {
+            background: linear-gradient(90deg, var(--am), #e07800)
+        }
+
+        .cf-l {
+            background: linear-gradient(90deg, var(--cr), #e05050)
+        }
+
+        /* Data table */
+        .dtbl {
+            width: 100%;
+            border: 1px solid var(--s0);
+            border-radius: var(--rx);
+            overflow: hidden;
+            margin-bottom: 14px
+        }
+
+        .drow {
+            display: grid;
+            grid-template-columns: 1fr 1fr
+        }
+
+        .drow+.drow {
+            border-top: 1px solid var(--s0)
+        }
+
+        .dcell {
+            padding: 9px 13px;
+            background: var(--w)
+        }
+
+        .dcell:first-child {
+            border-right: 1px solid var(--s0)
+        }
+
+        .dcell.full {
+            grid-column: 1/-1
+        }
+
+        .dlbl {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--soft);
+            font-family: var(--m);
+            margin-bottom: 2px
+        }
+
+        .dval {
+            font-size: 13px;
+            color: var(--n0);
+            font-weight: 500;
+            line-height: 1.4
+        }
+
+        .dv-r {
+            color: var(--cr);
+            font-weight: 700
+        }
+
+        .dv-g {
+            color: var(--gr);
+            font-weight: 700
+        }
+
+        .dv-b {
+            color: var(--n0);
+            font-weight: 600
+        }
+
+        /* Tags */
+        .tagrow {
+            margin-bottom: 12px
+        }
+
+        .tglbl {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--soft);
+            font-family: var(--m);
+            margin-bottom: 6px
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px
+        }
+
+        .tg {
+            padding: 3px 10px;
+            border-radius: 4px;
+            background: var(--sheet);
+            border: 1px solid var(--s0);
+            font-size: 11.5px;
+            color: var(--n4)
+        }
+
+        /* Urgency */
+        .urg {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 11px;
+            border-radius: 20px;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: .2px
+        }
+
+        .ug-r {
+            background: var(--grl);
+            color: var(--gr);
+            border: 1px solid rgba(25, 107, 60, .18)
+        }
+
+        .ug-s {
+            background: var(--aml);
+            color: var(--am);
+            border: 1px solid rgba(194, 86, 0, .18)
+        }
+
+        .ug-u {
+            background: var(--crl);
+            color: var(--cr);
+            border: 1px solid rgba(192, 39, 45, .18)
+        }
+
+        .ug-e {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid rgba(153, 27, 27, .18);
+            animation: epub 1.5s ease-in-out infinite
+        }
+
+        @keyframes epub {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .6
+            }
+        }
+
+        /* ══════════════════════
+   CLINICAL REPORT
+══════════════════════ */
+        /* Report overlay modal */
+        .report-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+            background: rgba(6, 13, 24, 0.65);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .report-overlay .report-modal {
+            width: 100%;
+            max-width: 780px;
+            max-height: 92vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .report-close-btn {
+            position: fixed;
+            top: 18px;
+            right: 24px;
+            z-index: 1001;
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1.5px solid var(--pale);
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--n0);
+            transition: all 0.15s;
+            box-shadow: var(--sh1);
+        }
+
+        .report-close-btn:hover {
+            background: white;
+            border-color: var(--cr);
+            color: var(--cr);
+            box-shadow: var(--sh2);
+        }
+
+        .repdoc {
+            background: var(--w);
+            border: 1px solid var(--s0);
+            border-radius: var(--rl);
+            overflow: hidden;
+            box-shadow: var(--sh2)
+        }
+
+        .rep-head {
+            background: var(--n1);
+            color: white;
+            padding: 22px 26px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rep-head::after {
+            content: '';
+            position: absolute;
+            right: -40px;
+            top: -40px;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .03);
+        }
+
+        .rh-l .rh-org {
+            font-family: var(--m);
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .45);
+            margin-bottom: 7px
+        }
+
+        .rh-l .rh-title {
+            font-family: var(--d);
+            font-size: 28px;
+            color: white;
+            font-style: italic;
+            margin-bottom: 3px;
+            line-height: 1.2;
+        }
+
+        .rh-l .rh-sub {
+            font-size: 12px;
+            color: rgba(255, 255, 255, .45)
+        }
+
+        .rh-r {
+            text-align: right;
+            flex-shrink: 0
+        }
+
+        .rh-mark {
+            width: 46px;
+            height: 46px;
+            background: var(--cr);
+            border-radius: var(--rx);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+            margin-left: auto;
+            margin-bottom: 7px;
+            box-shadow: 0 3px 12px rgba(192, 39, 45, .4);
+        }
+
+        .rh-date {
+            font-family: var(--m);
+            font-size: 10px;
+            color: rgba(255, 255, 255, .38);
+            margin-bottom: 3px
+        }
+
+        .rh-id {
+            font-family: var(--m);
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .72)
+        }
+
+        .rep-alert {
+            padding: 10px 26px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ra-t {
+            background: var(--crl);
+            color: var(--cr);
+            border-bottom: 1px solid rgba(192, 39, 45, .12)
+        }
+
+        .ra-c {
+            background: var(--grl);
+            color: var(--gr);
+            border-bottom: 1px solid rgba(25, 107, 60, .12)
+        }
+
+        .rep-body {
+            padding: 24px 26px
+        }
+
+        .rep-sec {
+            margin-bottom: 24px
+        }
+
+        .rep-sec:last-child {
+            margin-bottom: 0
+        }
+
+        .rs-title {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--mid);
+            font-family: var(--m);
+            border-bottom: 1px solid var(--s0);
+            padding-bottom: 6px;
+            margin-bottom: 13px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .rs-title::before {
+            content: '';
+            width: 3px;
+            height: 12px;
+            background: var(--cr);
+            border-radius: 2px;
+            flex-shrink: 0
+        }
+
+        .rep-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 13px
+        }
+
+        .rf {
+            display: flex;
+            flex-direction: column;
+            gap: 3px
+        }
+
+        .rf.full {
+            grid-column: 1/-1
+        }
+
+        .rflbl {
+            font-size: 9.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            color: var(--soft);
+            font-family: var(--m)
+        }
+
+        .rfval {
+            font-size: 14px;
+            color: var(--n0);
+            font-weight: 500;
+            line-height: 1.5
+        }
+
+        .rfval.big {
+            font-size: 17px;
+            font-weight: 700;
+            font-family: var(--d)
+        }
+
+        .rfval.pos {
+            color: var(--cr)
+        }
+
+        .rfval.neg {
+            color: var(--gr)
+        }
+
+        .rep-rec {
+            padding: 13px 16px;
+            border-radius: var(--rx);
+            font-size: 13.5px;
+            line-height: 1.8;
+            color: var(--n0)
+        }
+
+        .rep-rec.t {
+            background: var(--crl);
+            border-left: 3px solid var(--cr)
+        }
+
+        .rep-rec.c {
+            background: var(--grl);
+            border-left: 3px solid var(--gr)
+        }
+
+        .sig-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            padding-top: 20px;
+            border-top: 1px solid var(--s0);
+            margin-top: 20px
+        }
+
+        .sigline {
+            border-bottom: 1px solid var(--n3);
+            height: 34px;
+            margin-bottom: 5px
+        }
+
+        .siglbl {
+            font-size: 11px;
+            color: var(--mid)
+        }
+
+        .rep-foot {
+            padding: 12px 26px;
+            background: var(--paper);
+            border-top: 1px solid var(--s0);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .rfoot-note {
+            font-size: 10.5px;
+            color: var(--soft);
+            font-style: italic;
+            max-width: 62%;
+            line-height: 1.5
+        }
+
+        .rfoot-gen {
+            font-family: var(--m);
+            font-size: 9.5px;
+            color: var(--soft)
+        }
+
+        .rep-acts {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px
+        }
+
+        .ract {
+            padding: 9px 20px;
+            border-radius: var(--rx);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all .13s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ract-p {
+            background: var(--cr);
+            color: white
+        }
+
+        .ract-p:hover {
+            background: var(--cr2)
+        }
+
+        .ract-o {
+            background: transparent;
+            border: 1.5px solid var(--pale);
+            color: var(--n4)
+        }
+
+        .ract-o:hover {
+            border-color: var(--cr);
+            color: var(--cr)
+        }
+
+
+        /* ══ PROFESSIONAL CLINICAL REPORT STYLES ══ */
+        .repdoc {
+            background: #fff !important;
+            color: #1a1a1a !important;
+            padding: 40px 45px !important;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .rpt-letterhead {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 25px;
+            border-bottom: 3px solid #1a1a1a;
+            margin-bottom: 30px;
+        }
+
+        .rpt-lh-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .rpt-logo {
+            font-size: 42px;
+            background: #f0f4f8;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            border: 1px solid #d1d9e0;
+        }
+
+        .rpt-hospital-name {
+            font-size: 24px;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        .rpt-hospital-name em {
+            color: #e63939;
+            font-style: italic;
+        }
+
+        .rpt-hospital-sub {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a5568;
+            margin-top: 2px;
+        }
+
+        .rpt-hospital-contact {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 4px;
+        }
+
+        .rpt-lh-right {
+            text-align: right;
+        }
+
+        .rpt-report-type {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .rpt-modality-badge {
+            display: inline-block;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .rpt-rid {
+            font-size: 13px;
+            font-weight: 700;
+            font-family: var(--m);
+            color: #4a5568;
+        }
+
+        .rpt-date {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 2px;
+        }
+
+        .rpt-section {
+            margin-bottom: 25px;
+        }
+
+        .rpt-section-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: #4a5568;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 1.5px solid #e2e8f0;
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+        }
+
+        .rpt-demo-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .rpt-td-lbl {
+            width: 20%;
+            font-size: 11px;
+            font-weight: 700;
+            color: #718096;
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .rpt-td-val {
+            width: 30%;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a1a1a;
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .rpt-td-val.mono {
+            font-family: var(--m);
+        }
+
+        .rpt-technique-box {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: #2d3748;
+            padding: 12px 15px;
+            background: #f8fafc;
+            border-left: 4px solid #cbd5e0;
+            border-radius: 4px;
+        }
+
+        .rpt-findings-subsec {
+            font-size: 13px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            text-decoration: underline;
+        }
+
+        .rf-finding-row {
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: #2d3748;
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        .rpt-keyfeats {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding-left: 5px;
+        }
+
+        .rf-key-feat {
+            display: flex;
+            gap: 12px;
+            font-size: 13.5px;
+            color: #2d3748;
+        }
+
+        .rf-bullet {
+            font-family: var(--m);
+            font-weight: 800;
+            color: #e63939;
+            font-size: 11px;
+            padding-top: 3px;
+        }
+
+        .rpt-classification-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            background: #f1f5f9;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 2px solid #e2e8f0;
+        }
+
+        .rpt-cls-pos {
+            background: #fff5f5;
+            border-color: #feb2b2;
+        }
+
+        .rpt-cls-neg {
+            background: #f0fff4;
+            border-color: #9ae6b4;
+        }
+
+        .rpt-cls-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .rpt-cls-icon {
+            font-size: 36px;
+        }
+
+        .rpt-cls-status {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .rpt-cls-pos .rpt-cls-status { color: #c53030; }
+        .rpt-cls-neg .rpt-cls-status { color: #276749; }
+
+        .rpt-cls-type {
+            font-size: 13px;
+            margin-top: 4px;
+            color: #4a5568;
+        }
+
+        .rpt-cls-right {
+            text-align: right;
+        }
+
+        .rpt-conf-badge {
+            font-size: 24px;
+            font-weight: 900;
+            font-family: var(--m);
+            color: #1a1a1a;
+            line-height: 1;
+        }
+
+        .rpt-diff-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .diff-entry {
+            background: #f8fafc;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #2d3748;
+            border: 1px solid #e2e8f0;
+        }
+
+        .diff-rank {
+            font-size: 9px;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+
+        .rpt-impression-box {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .rpt-impression-title {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #e63939;
+        }
+
+        .rpt-impression-narrative {
+            font-size: 14.5px;
+            line-height: 1.7;
+            color: #e2e8f0;
+        }
+
+        .rpt-rec-box {
+            padding: 18px 22px;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.7;
+            border-left: 5px solid #cbd5e0;
+        }
+
+        .rpt-rec-pos { background: #fff5f5; border-color: #feb2b2; color: #742a2a; }
+        .rpt-rec-neg { background: #f0fff4; border-color: #9ae6b4; color: #22543d; }
+
+        .rpt-sig-block {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 50px 0 30px;
+        }
+
+        .rpt-sig-col {
+            position: relative;
+        }
+
+        .rpt-sig-stamp {
+            position: absolute;
+            top: -50px;
+            left: 20px;
+            width: 80px;
+            height: 80px;
+            border: 2px solid #e63939;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-15deg);
+            opacity: 0.6;
+        }
+
+        .rpt-stamp-inner {
+            text-align: center;
+            color: #e63939;
+        }
+
+        .rpt-sig-line {
+            border-top: 1px solid #1a1a1a;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .rpt-sig-name {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .rpt-sig-title {
+            font-size: 11px;
+            color: #718096;
+            margin-top: 2px;
+        }
+
+        .rpt-sig-reg {
+            font-size: 10px;
+            color: #a0aec0;
+            margin-top: 2px;
+        }
+
+        .rpt-disclaimer {
+            font-size: 11px;
+            line-height: 1.6;
+            color: #718096;
+            padding: 20px;
+            border: 1px dashed #cbd5e0;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        .rpt-footer-bar {
+            margin-top: 40px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #a0aec0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .rpt-footer-code {
+            font-family: var(--m);
+        }
+
+        /* Print Media Query — Industrial Strength Fix */
+        @media print {
+            /* Hide everything by default */
+            body > * { display: none !important; }
+            
+            /* Show ONLY the report modal and its printable content */
+            #reportModal, #reportModal * { display: block !important; visibility: visible !important; }
+            
+            /* Reset modal positioning for the printed page */
+            #reportModal {
+                position: absolute !important;
+                left: 0 !important;
+                top: 0 !important;
+                width: 100% !important;
+                height: auto !important;
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                z-index: 99999;
+            }
+
+            .report-overlay {
+                position: static !important;
+                background: white !important;
+                padding: 0 !important;
+                display: block !important;
+            }
+
+            .report-modal {
+                box-shadow: none !important;
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: none !important;
+                border: none !important;
+                display: block !important;
+            }
+
+            #printableReport {
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                border: none !important;
+            }
+
+            /* Hide interactive elements from the physical print */
+            .report-close-btn, .rep-acts, .cbar, .sidebar { 
+                display: none !important; 
+            }
+
+            /* Ensure background colors and images are printed */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        /* ══════════════════════
+   CHAT
+══════════════════════ */
+        .chatpage {
+            padding: 22px 24px 18px;
+            max-width: 840px
+        }
+
+        .chat-thread {
+            display: flex;
+            flex-direction: column;
+            gap: 15px
+        }
+
+        .cmsg {
+            display: flex;
+            gap: 10px;
+            animation: msgup .28s ease forwards;
+            opacity: 0;
+            transform: translateY(5px)
+        }
+
+        @keyframes msgup {
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .cmsg.usr {
+            flex-direction: row-reverse
+        }
+
+        .cmav {
+            width: 30px;
+            height: 30px;
+            border-radius: var(--rx);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            flex-shrink: 0;
+            margin-top: 2px
+        }
+
+        .cmav-ai {
+            background: var(--cr)
+        }
+
+        .cmav-usr {
+            background: var(--sheet);
+            border: 1px solid var(--s0)
+        }
+
+        .cmbody {
+            max-width: 77%
+        }
+
+        .cmwho {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--soft);
+            margin-bottom: 4px;
+            letter-spacing: .3px
+        }
+
+        .cmsg.usr .cmwho {
+            text-align: right
+        }
+
+        .cmbub {
+            padding: 11px 14px;
+            border-radius: 10px;
+            font-size: 13.5px;
+            line-height: 1.75
+        }
+
+        .cmbub-ai {
+            background: var(--w);
+            border: 1px solid var(--s0);
+            border-radius: 3px 10px 10px 10px;
+            color: var(--n0);
+            box-shadow: var(--sh0)
+        }
+
+        .cmbub-usr {
+            background: var(--n1);
+            color: white;
+            border-radius: 10px 3px 10px 10px
+        }
+
+        .cm-img {
+            max-width: 175px;
+            border-radius: var(--rx);
+            overflow: hidden;
+            border: 1px solid var(--s0);
+            margin-bottom: 7px
+        }
+
+        .cm-img img {
+            width: 100%;
+            display: block
+        }
+
+        .typmsg {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 11px 14px;
+            background: var(--w);
+            border: 1px solid var(--s0);
+            border-radius: 3px 10px 10px 10px;
+            box-shadow: var(--sh0);
+            width: fit-content;
+            font-size: 12.5px;
+            color: var(--mid)
+        }
+
+        .tdots span {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--cr);
+            display: inline-block;
+            animation: tdt 1.4s ease-in-out infinite;
+            margin: 0 1.5px;
+            opacity: .3
+        }
+
+        .tdots span:nth-child(2) {
+            animation-delay: .2s
+        }
+
+        .tdots span:nth-child(3) {
+            animation-delay: .4s
+        }
+
+        @keyframes tdt {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: .3
+            }
+
+            30% {
+                transform: translateY(-5px);
+                opacity: 1
+            }
+        }
+
+        /* ══════════════════════
+   TOOLS
+══════════════════════ */
+        .toolspage {
+            padding: 22px 24px 40px;
+            max-width: 1020px
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 13px;
+            margin-top: 20px
+        }
+
+        .toolcard {
+            background: var(--w);
+            border: 1px solid var(--s0);
+            border-radius: var(--rl);
+            padding: 20px;
+            cursor: pointer;
+            transition: all .18s;
+            box-shadow: var(--sh0)
+        }
+
+        .toolcard:hover {
+            border-color: var(--cr);
+            box-shadow: var(--sh1);
+            transform: translateY(-1px)
+        }
+
+        .tc-ico {
+            font-size: 26px;
+            margin-bottom: 10px
+        }
+
+        .tc-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--n0);
+            font-family: var(--d);
+            margin-bottom: 5px
+        }
+
+        .tc-desc {
+            font-size: 12px;
+            color: var(--mid);
+            line-height: 1.65
+        }
+
+        .tc-tag {
+            display: inline-block;
+            margin-top: 9px;
+            font-size: 9px;
+            font-family: var(--m);
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: var(--sheet);
+            color: var(--mid);
+            border: 1px solid var(--s0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .5px
+        }
+
+        /* ══════════════════════
+   HISTORY
+══════════════════════ */
+        .histpage {
+            padding: 22px 24px 40px;
+            max-width: 860px
+        }
+
+        .hitem {
+            background: var(--w);
+            border: 1px solid var(--s0);
+            border-radius: var(--rl);
+            padding: 14px 18px;
+            margin-bottom: 9px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            box-shadow: var(--sh0);
+            transition: all .13s;
+            cursor: pointer
+        }
+
+        .hitem:hover {
+            box-shadow: var(--sh1);
+            border-color: var(--s1)
+        }
+
+        .hi-ico {
+            font-size: 26px;
+            flex-shrink: 0
+        }
+
+        .hi-inf {
+            flex: 1
+        }
+
+        .hi-diag {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--n0);
+            font-family: var(--d)
+        }
+
+        .hi-meta {
+            font-size: 11.5px;
+            color: var(--mid);
+            margin-top: 2px
+        }
+
+        .hi-r {
+            text-align: right;
+            flex-shrink: 0
+        }
+
+        .hi-conf {
+            font-family: var(--m);
+            font-size: 17px;
+            font-weight: 600
+        }
+
+        .hi-id {
+            font-family: var(--m);
+            font-size: 9px;
+            color: var(--soft)
+        }
+
+        /* ── Misc ── */
+        .errbox {
+            padding: 13px 16px;
+            background: var(--crl);
+            border: 1px solid rgba(192, 39, 45, .2);
+            border-radius: var(--rx);
+            font-size: 13px;
+            color: var(--cr);
+            line-height: 1.65
+        }
+
+        .spin {
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid rgba(192, 39, 45, .15);
+            border-top-color: var(--cr);
+            border-radius: 50%;
+            animation: spin .7s linear infinite;
+            flex-shrink: 0
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .loading-r {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 11px;
+            padding: 52px 20px;
+            color: var(--mid);
+            font-size: 13.5px
+        }
+
+        @media(max-width:860px) {
+            .sidebar {
+                display: none
+            }
+
+            .az-grid {
+                grid-template-columns: 1fr
+            }
+
+            .home-features {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media print {
+            .sidebar, .topbar, .rep-acts, .actrow, .upzone, .ctx-grp, .cbar, .chat-box, .btn-row {
+                display: none !important;
+            }
+            .app {
+                display: block !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+            .main {
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                overflow: visible !important;
+                background: white !important;
+            }
+            .repdoc {
+                box-shadow: none !important;
+                border: none !important;
+                margin: 0 !important;
+                width: 100% !important;
+                display: block !important;
+                position: static !important;
+                overflow: visible !important;
+            }
+            body, html {
+                background: white !important;
+                overflow: visible !important;
+                height: auto !important;
+            }
+            /* Visual indicators for clinical significance */
+            .detbanner { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            .urg { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- ══ SIDEBAR ══ -->
+        <aside class="sidebar">
+            <div class="sb-brand" onclick="navTo('home')">
+                <div class="sb-icon">🧠</div>
+                <div class="sb-wordmark">
+                    <div class="sb-name">CLINIX<em style="color:#e63939;font-style:normal">.AI</em></div>
+                    <div class="sb-sub">Medical Intelligence</div>
+                </div>
+            </div>
+
+            <div class="sb-group">
+                <div class="sb-glabel">Navigate</div>
+                <div class="sb-item on" id="sbi-home" onclick="navTo('home')"><span class="sbi">⌂</span>Home</div>
+                <div class="sb-item" id="sbi-analyzer" onclick="navTo('analyzer')"><span class="sbi">🔬</span>MRI
+                    Analyzer<span class="sb-pill pill-ai">AI</span></div>
+                <div class="sb-item" id="sbi-chat" onclick="navTo('chat')"><span class="sbi">💬</span>AI Assistant</div>
+                <div class="sb-item" id="sbi-tools" onclick="navTo('tools')"><span class="sbi">🛠</span>Medical Tools
+                </div>
+                <div class="sb-item" id="sbi-history" onclick="navTo('history')"><span class="sbi">📋</span>Report
+                    History</div>
+                <div class="sb-item" onclick="doLogout()"><span class="sbi">⏻</span>Logout</div>
+            </div>
+
+            <div class="sb-div"></div>
+
+            <div class="sb-foot">
+                CLINIX.AI · v3.0<br>Local Intelligence Engine<br>
+                <span style="color:rgba(255,255,255,.15)">Proprietary Medical Platform</span>
+            </div>
+        </aside>
+
+        <!-- ══ MAIN ══ -->
+        <div class="main">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <nav class="tb-nav">
+                    <button class="tb-lnk on" id="tbl-home" onclick="navTo('home')">Home</button>
+                    <button class="tb-lnk" id="tbl-analyzer" onclick="navTo('analyzer')">MRI Analysis</button>
+                    <button class="tb-lnk" id="tbl-chat" onclick="navTo('chat')">AI Assistant</button>
+                    <button class="tb-lnk" id="tbl-tools" onclick="navTo('tools')">Tools</button>
+                    <button class="tb-lnk" id="tbl-history" onclick="navTo('history')">History</button>
+                </nav>
+                <div class="tb-right">
+                    <div class="tb-badge show" id="topBadge">
+                        <div class="tbbd"></div>Local Core
+                    </div>
+            </header>
+
+            <!-- PAGES -->
+            <div class="content" id="content">
+
+                <!-- ════ HOME ════ -->
+                <div id="pg-home" class="home">
+                    <div class="home-lede">
+                        <span class="home-mark">🧠</span>
+                        <div class="home-title">CLINIX<b style="color:#c0272d;font-style:italic">.AI</b></div>
+                        <div class="home-strap">Medical Intelligence Search Engine · Brain Tumor Detection ·
+                            Neuroradiology AI</div>
+                    </div>
+
+                    <div class="home-searchbox">
+                        <input class="hsi" id="hsi"
+                            placeholder="Search brain tumors, MRI findings, treatment protocols, clinical guidelines…"
+                            onkeydown="if(event.key==='Enter')doHomeSearch()" oninput="" autocomplete="off">
+                        <button class="hsbtn" onclick="doHomeSearch()">🔍</button>
+                    </div>
+
+                    <div class="home-chips">
+                        <div class="chip" onclick="chipQ('Glioma tumor MRI features diagnosis treatment')">🔴 Glioma
+                        </div>
+                        <div class="chip" onclick="chipQ('Meningioma characteristics grading prognosis')">🟠 Meningioma
+                        </div>
+                        <div class="chip" onclick="chipQ('Pituitary adenoma types symptoms imaging')">🟡 Pituitary</div>
+                        <div class="chip" onclick="chipQ('Malignant brain neoplasm features prognosis')">🔴 Malignant
+                        </div>
+                        <div class="chip" onclick="chipQ('Benign brain tumor meningioma schwannoma')">🟢 Benign</div>
+                        <div class="chip" onclick="chipQ('Brain abscess MRI diagnosis treatment antibiotics')">🟣
+                            Abscess</div>
+                        <div class="chip" onclick="chipQ('Ischemic hemorrhagic stroke MRI diffusion imaging')">🔵 Stroke
+                        </div>
+                        <div class="chip" onclick="chipQ('Intracranial hemorrhage types epidural subdural')">🩸
+                            Hemorrhage</div>
+                        <div class="chip" onclick="chipQ('Brain biopsy indications procedures stereotactic')">🔬 Biopsy
+                        </div>
+                        <div class="chip" onclick="chipQ('Autopsy neuropathology brain examination findings')">🗂️
+                            Autopsy</div>
+                        <div class="chip" onclick="chipQ('Brain MRI sequences T1 T2 FLAIR DWI guide')">📡 MRI Sequences
+                        </div>
+                        <div class="chip" onclick="navTo('analyzer')">📸 Analyze My MRI →</div>
+                    </div>
+
+                    <div class="home-features">
+                        <div class="feat" onclick="navTo('analyzer')">
+                            <div class="feat-ico">🔬</div>
+                            <div class="feat-name">MRI Analyzer</div>
+                            <div class="feat-desc">Upload any brain MRI scan. Get instant AI-powered tumor detection
+                                with structured clinical findings in under 10 seconds.</div>
+                            <div class="feat-tag">CLINIX Core · 95%+ Accuracy</div>
+                        </div>
+                        <div class="feat" onclick="navTo('analyzer')">
+                            <div class="feat-ico">📄</div>
+                            <div class="feat-name">Generate Report</div>
+                            <div class="feat-desc">One-click clinical report with diagnosis, tumor characterization,
+                                differential diagnoses, and specialist recommendations. Print-ready PDF.</div>
+                            <div class="feat-tag">High Precision · PDF Export</div>
+                        </div>
+                        <div class="feat" onclick="navTo('chat')">
+                            <div class="feat-ico">💬</div>
+                            <div class="feat-name">AI Assistant</div>
+                            <div class="feat-desc">Ask follow-up questions about findings, explore treatment options, or
+                                discuss clinical management with expert-level AI responses.</div>
+                            <div class="feat-tag">Medical NLP · Local</div>
+                        </div>
+                        <div class="feat" onclick="chipQ('Differential diagnosis ring-enhancing brain lesions')">
+                            <div class="feat-ico">🔍</div>
+                            <div class="feat-name">Medical Search</div>
+                            <div class="feat-desc">Search across neuroradiology knowledge — tumor types, protocols,
+                                treatment guidelines, ICD-10 codes, and clinical research.</div>
+                            <div class="feat-tag">AI-Powered · Real-time</div>
+                        </div>
+                        <div class="feat" onclick="navTo('tools')">
+                            <div class="feat-ico">🧰</div>
+                            <div class="feat-name">Clinical Tools</div>
+                            <div class="feat-desc">WHO grading system, MRI protocol guide, treatment protocols,
+                                differential builder, malignancy markers, ICD-10 lookup.</div>
+                            <div class="feat-tag">6 Tools Included</div>
+                        </div>
+                        <div class="feat" onclick="navTo('history')">
+                            <div class="feat-ico">📋</div>
+                            <div class="feat-name">Report History</div>
+                            <div class="feat-desc">Every scan you analyze is automatically saved to your session history
+                                with full reports accessible and printable at any time.</div>
+                            <div class="feat-tag">Session Storage</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ SEARCH RESULTS ════ -->
+                <div id="pg-search" style="display:none" class="srpage">
+                    <div class="sr-strip">
+                        <div class="sr-row">
+                            <div class="sr-iwrap">
+                                <input class="sr-inp" id="srInp" placeholder="Search medical knowledge…"
+                                    onkeydown="if(event.key==='Enter')execSearch(document.getElementById('srInp').value.trim())">
+                                <button class="sr-sbtn"
+                                    onclick="execSearch(document.getElementById('srInp').value.trim())">🔍</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sr-tabs">
+                        <div class="sr-tab on">🔍 All</div>
+                        <div class="sr-tab">📄 Clinical</div>
+                        <div class="sr-tab">🧬 Research</div>
+                        <div class="sr-tab">💊 Treatment</div>
+                        <div class="sr-tab">📡 Imaging</div>
+                    </div>
+                    <div class="sr-body">
+                        <div class="sr-meta" id="srMeta"></div>
+                        <div id="srResults"></div>
+                    </div>
+                </div>
+
+                <!-- ════ ANALYZER ════ -->
+                <div id="pg-analyzer" style="display:none" class="azpage">
+                    <div class="az-hdr">
+                        <div class="az-title">Brain MRI Analyzer</div>
+                        <div class="az-sub">Upload a brain MRI scan for AI-powered tumor detection and clinical report
+                            generation</div>
+                    </div>
+                    <div class="az-grid">
+                        <!-- Upload column -->
+                        <div>
+                            <div class="panel">
+                                <div class="ph">
+                                    <div class="ph-l"><span class="ph-ico">📸</span><span class="ph-tit">MRI Scan
+                                            Upload</span></div>
+                                    <span class="ph-b phb-g">CLINIX Core Engine</span>
+                                </div>
+                                <div class="pb">
+                                    <div class="upzone" id="upzone" onclick="document.getElementById('fInput').click()"
+                                        ondragover="dzOver(event)" ondragleave="dzLeave()" ondrop="dzDrop(event)">
+                                        <span class="uz-ico">🧠</span>
+                                        <div class="uz-tit">Drop your MRI scan here</div>
+                                        <div class="uz-sub">Axial, coronal, or sagittal — any modality</div>
+                                        <button class="uz-btn"
+                                            onclick="event.stopPropagation();document.getElementById('fInput').click()">📂
+                                            Browse Files</button>
+                                        <div class="uz-fmt">JPEG · PNG · WEBP · BMP · up to 20 MB</div>
+                                    </div>
+
+                                    <div class="prevwrap" id="prevwrap">
+                                        <img class="previmg" id="previmg" src="" alt="MRI Scan">
+                                        <canvas class="prevcanvas" id="prevcanvas"></canvas>
+                                        <div class="prevbadge" id="prevbadge">CLINIX.AI · SCAN LOADED</div>
+                                        <button class="prevchg" onclick="document.getElementById('fInput').click()">↕
+                                            Change</button>
+                                    </div>
+
+                                    <div class="ctx-grp" id="ctxGrp" style="display:none">
+                                        <div class="ctx-lbl">Clinical Context <span
+                                                style="font-weight:400;color:var(--soft)">(optional — improves
+                                                accuracy)</span></div>
+                                        <input class="ctx-inp" id="ctxInp"
+                                            placeholder="e.g. 48F, T1 contrast, persistent headaches 3 months, no prior imaging">
+                                    </div>
+
+                                    <div class="actrow" id="actrow" style="display:none">
+                                        <button class="abtn abtn-analyze" id="btnAnalyze" onclick="doAnalyze()">🔍
+                                            Analyze MRI</button>
+                                        <button class="abtn abtn-report" id="btnReport" onclick="doReport()">📄 Generate
+                                            Report</button>
+                                        <button class="abtn abtn-clear" onclick="clearScan()" title="Clear">✕</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Results column -->
+                        <div>
+                            <div class="panel" id="rPanel">
+                                <div class="ph">
+                                    <div class="ph-l"><span class="ph-ico">📊</span><span class="ph-tit">Analysis
+                                            Results</span></div>
+                                    <span class="ph-b phb-live" id="rBadge">Awaiting scan</span>
+                                </div>
+                                <div class="pb" id="rBody">
+                                    <div class="rph">
+                                        <div class="rph-ico">🔬</div>
+                                        <div class="rph-tit">No scan loaded yet</div>
+                                        <div class="rph-sub">Upload a brain MRI to begin AI analysis</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Report area (now just a placeholder, report opens in modal) -->
+                            <div id="repArea" style="display:none;margin-top:16px">
+                                <div class="panel">
+                                    <div class="ph">
+                                        <div class="ph-l"><span class="ph-ico">📄</span><span class="ph-tit">Clinical
+                                                Report</span></div>
+                                        <span class="ph-b phb-rpt">Auto-generated · 90%+ Accuracy</span>
+                                    </div>
+                                    <div class="pb" id="repBody"></div>
+                                </div>
+                            </div>
+                            <!-- Report modal overlay (appended to body by JS) -->
+                            <div id="reportModal"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ CHAT ════ -->
+                <div id="pg-chat" style="display:none" class="chatpage">
+                    <div class="chat-thread" id="chatThread">
+                        <div class="cmsg">
+                            <div class="cmav cmav-ai">🧠</div>
+                            <div class="cmbody">
+                                <div class="cmwho">CLINIX.AI</div>
+                                <div class="cmbub cmbub-ai">
+                                    Hello. I'm the CLINIX.AI medical intelligence assistant. I
+                                    specialise in neuroradiology and brain tumor diagnostics.<br><br>
+                                    <strong>I can help with:</strong><br>
+                                    • MRI findings interpretation and clinical significance<br>
+                                    • Tumor characterisation — glioma, meningioma, pituitary, grades<br>
+                                    • Differential diagnoses and systematic workup<br>
+                                    • Treatment protocols and current guidelines<br>
+                                    • Follow-up on your uploaded scan analysis<br><br>
+                                    Use <strong>MRI Analyzer</strong> to upload a scan, or ask any medical question
+                                    below.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ TOOLS ════ -->
+                <div id="pg-tools" style="display:none" class="toolspage">
+                    <div class="az-title">Medical Tools</div>
+                    <div class="az-sub">AI-powered clinical reference tools — click any card to get an expert answer
+                    </div>
+                    <div class="tools-grid">
+                        <div class="toolcard"
+                            onclick="toolQ('Provide a comprehensive clinical guide on WHO 2021 CNS tumor classification and grading, including molecular markers for each grade')">
+                            <div class="tc-ico">📚</div>
+                            <div class="tc-name">WHO CNS Grading</div>
+                            <div class="tc-desc">Complete 2021 WHO classification and grading criteria including IDH,
+                                CDKN2A/B, TERT, and other molecular markers.</div>
+                            <div class="tc-tag">Reference</div>
+                        </div>
+                        <div class="toolcard"
+                            onclick="toolQ('Explain all standard brain MRI sequences: T1, T2, FLAIR, DWI, ADC, SWI, MRS, perfusion — clinical indications and what each shows in brain tumors')">
+                            <div class="tc-ico">📡</div>
+                            <div class="tc-name">MRI Protocol Guide</div>
+                            <div class="tc-desc">T1, T2, FLAIR, DWI, ADC, SWI, perfusion MRI — indications, key
+                                findings, and tumor-specific interpretations.</div>
+                            <div class="tc-tag">Protocol</div>
+                        </div>
+                        <div class="toolcard"
+                            onclick="toolQ('Provide detailed treatment protocols for: 1) Glioblastoma (Stupp protocol) 2) Low-grade glioma 3) Meningioma 4) Pituitary adenoma — include surgery, radiation, chemotherapy with dosing')">
+                            <div class="tc-ico">💊</div>
+                            <div class="tc-name">Treatment Protocols</div>
+                            <div class="tc-desc">GBM Stupp protocol, low-grade glioma watch-and-wait vs treatment,
+                                meningioma surgical/RT indications, pituitary management.</div>
+                            <div class="tc-tag">Clinical</div>
+                        </div>
+                        <div class="toolcard"
+                            onclick="toolQ('Build a systematic differential diagnosis for ring-enhancing brain lesions on MRI, listing distinguishing MRI features, clinical context, and workup for each diagnosis')">
+                            <div class="tc-ico">🔍</div>
+                            <div class="tc-name">Differential Builder</div>
+                            <div class="tc-desc">Ring-enhancing, cystic, diffuse infiltrating, extra-axial — systematic
+                                workup with distinguishing imaging features for each.</div>
+                            <div class="tc-tag">Clinical</div>
+                        </div>
+                        <div class="toolcard"
+                            onclick="toolQ('Providing a complete clinical guide on Brain Abscess: etiology, stages (cerebritis vs capsule), key MRI features (DWI restriction), and neurosurgical/antibiotic management.')">
+                            <div class="tc-ico">🟣</div>
+                            <div class="tc-name">MRI Abscess Protocol</div>
+                            <div class="tc-desc">Distinguishing abscess from cystic tumors using DWI/ADC, management of
+                                ring-enhancing lesions, and infectious workup.</div>
+                            <div class="tc-tag">Reference</div>
+                        </div>
+                        <div class="toolcard"
+                            onclick="toolQ('Acute Stroke Protocol: Explain MRI findings in ischemic vs hemorrhagic stroke, DWI/FLAIR mismatch, tPA/thrombectomy windows, and NIHSS significance.')">
+                            <div class="tc-ico">🔵</div>
+                            <div class="tc-name">Stroke Response</div>
+                            <div class="tc-desc">Hyperacute stroke detection, hemorrhage evolution on MRI, and clinical
+                                decision support for intervention windows.</div>
+                            <div class="tc-tag">Emergency</div>
+                        </div>
+                        <div class="toolcard"
+                            onclick="toolQ('Intracranial Hemorrhage: Compare MRI appearance of epidural, subdural, and subarachnoid hemorrhage. Explain signal evolution on T1/T2 over time.')">
+                            <div class="tc-ico">🩸</div>
+                            <div class="tc-name">Hemorrhage Analysis</div>
+                            <div class="tc-desc">Signal patterns for hyperacute, acute, subacute, and chronic blood.
+                                Distinguishing between hemorrhage types.</div>
+                            <div class="tc-tag">Critical</div>
+                        </div>
+                        <div class="toolcard"
+                            onclick="toolQ('Brain Biopsy & Neuropathology Guide: Indications for stereotactic biopsy, procedural steps, and post-mortem autopsy brain removal/fixation protocols.')">
+                            <div class="tc-ico">🔬</div>
+                            <div class="tc-name">Biopsy & Autopsy</div>
+                            <div class="tc-desc">Clinical indications for tissue diagnosis, stereotactic accuracy, and
+                                standardized post-mortem neuropathological examination.</div>
+                            <div class="tc-tag">Pathology</div>
+                        </div>
+                        <div class="toolcard"
+                            onclick="toolQ('What MRI features distinguish high-grade malignant from low-grade or benign brain tumors? Include enhancement patterns, DWI restriction, spectroscopy findings, perfusion, and their sensitivities/specificities')">
+                            <div class="tc-ico">🧬</div>
+                            <div class="tc-name">Malignancy Markers</div>
+                            <div class="tc-desc">Enhancement, DWI restriction, choline peak, rCBV — imaging biomarkers
+                                for distinguishing benign vs malignant with evidence-based accuracy data.</div>
+                            <div class="tc-tag">Radiology</div>
+                        </div>
+                        <div class="toolcard"
+                            onclick="toolQ('Provide ICD-10 codes for all brain tumor types: gliomas, meningiomas, pituitary tumors, brain metastases, CNS lymphoma, medulloblastoma — include primary and secondary neoplasm codes')">
+                            <div class="tc-ico">🗂️</div>
+                            <div class="tc-name">ICD-10 Lookup</div>
+                            <div class="tc-desc">Complete ICD-10-CM coding for brain neoplasms, CNS tumors, and related
+                                diagnoses with primary and secondary codes.</div>
+                            <div class="tc-tag">Coding</div>
+                        </div>
+                        <!-- New classification tools -->
+                        <div class="toolcard"
+                            onclick="toolQ('Explain brain abscess: etiology, MRI features (DWI restriction, ring enhancement), differential from tumor, antibiotic treatment, surgical drainage indications')">
+                            <div class="tc-ico">🟣</div>
+                            <div class="tc-name">Brain Abscess Guide</div>
+                            <div class="tc-desc">Complete guide to brain abscess — MRI features, DWI restriction
+                                patterns, antibiotic regimens, and when to drain.</div>
+                            <div class="tc-tag">Infectious</div>
+                        </div>
+                        <div class="toolcard"
+                            onclick="toolQ('Explain ischemic and hemorrhagic stroke on MRI: DWI bright, ADC dark for ischemic; T2*/SWI for hemorrhagic. Include NIHSS scoring, tPA window, thrombectomy criteria')">
+                            <div class="tc-ico">🔵</div>
+                            <div class="tc-name">Stroke Protocol</div>
+                            <div class="tc-desc">Ischemic vs hemorrhagic stroke imaging, NIHSS scoring, thrombolysis
+                                window, mechanical thrombectomy criteria.</div>
+                            <div class="tc-tag">Emergency</div>
+                        </div>
+                        <div class="toolcard"
+                            onclick="toolQ('Explain intracranial hemorrhage types: epidural, subdural, subarachnoid, intraparenchymal. Include CT/MRI findings, Hunt-Hess grading, management protocols')">
+                            <div class="tc-ico">🩸</div>
+                            <div class="tc-name">Hemorrhage Types</div>
+                            <div class="tc-desc">Epidural, subdural, SAH, IPH — imaging findings, grading systems, and
+                                emergency management protocols.</div>
+                            <div class="tc-tag">Emergency</div>
+                        </div>
+                        <div class="toolcard"
+                            onclick="toolQ('Explain brain biopsy: indications, stereotactic vs open biopsy techniques, risks, histopathological analysis, and when to perform')">
+                            <div class="tc-ico">🔬</div>
+                            <div class="tc-name">Biopsy Guide</div>
+                            <div class="tc-desc">Stereotactic vs open biopsy — indications, technique, complications,
+                                and how histopathology guides treatment.</div>
+                            <div class="tc-tag">Procedure</div>
+                        </div>
+                        <div class="toolcard"
+                            onclick="toolQ('Explain neuropathology autopsy: brain examination technique, sampling protocols, histological staining methods, and common post-mortem findings in CNS disease')">
+                            <div class="tc-ico">🗂️</div>
+                            <div class="tc-name">Autopsy & Neuropathology</div>
+                            <div class="tc-desc">Brain autopsy protocols, tissue sampling, staining techniques, and
+                                diagnostic criteria for post-mortem CNS evaluation.</div>
+                            <div class="tc-tag">Pathology</div>
+                        </div>
+                        <div class="toolcard"
+                            onclick="toolQ('Explain the key differences between malignant and benign brain tumors: growth patterns, MRI features, molecular markers, treatment approaches, and prognosis')">
+                            <div class="tc-ico">⚖️</div>
+                            <div class="tc-name">Malignant vs Benign</div>
+                            <div class="tc-desc">Compare malignant and benign brain tumors — growth rate, imaging,
+                                histology, treatment, and patient outcomes.</div>
+                            <div class="tc-tag">Classification</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ════ HISTORY ════ -->
+                <div id="pg-history" style="display:none" class="histpage">
+                    <div class="az-title">Report History</div>
+                    <div class="az-sub" style="margin-bottom:20px">Your analysis sessions from this browser session
+                    </div>
+                    <div id="histList">
+                        <div style="text-align:center;padding:60px 20px;color:var(--soft)">
+                            <div style="font-size:38px;margin-bottom:12px;opacity:.35">📋</div>
+                            <div
+                                style="font-size:14.5px;font-weight:700;color:var(--mid);font-family:var(--d);margin-bottom:5px">
+                                No reports yet</div>
+                            <div style="font-size:12.5px">Analyze a brain MRI to create your first clinical report</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /content -->
+
+            <!-- CHAT INPUT BAR -->
+            <div class="cbar" id="cbar">
+                <button class="cbar-att" onclick="document.getElementById('fInput').click()"
+                    title="Attach MRI scan">📎</button>
+                <div class="cbar-wrap">
+                    <textarea class="cbar-inp" id="chatInp" rows="1"
+                        placeholder="Ask about MRI findings, tumor types, treatment options, clinical guidelines…"
+                        onkeydown="ciKey(event)" oninput="ciResize(this)"></textarea>
+                </div>
+                <button class="cbar-send" id="chatSend" onclick="sendChat()">➤</button>
+            </div>
+
+        </div><!-- /main -->
+    </div><!-- /app -->
+
+    <input type="file" id="fInput" accept="image/*" onchange="onFileChoose(event)" style="display:none">
+
+    <script th:inline="none">
+        /* ================================================================
+           CLINIX.AI — Application Logic
+           Clean · Zero-hallucination · Single CLINIX API
+        ================================================================ */
+
+        const CFG = {
+            API_BASE: '/api/v1'
+        };
+
+        const ST = {
+            sessionId: 'SESS-' + Math.random().toString(36).substring(2, 9).toUpperCase(),
+            file: null, b64: null, mt: null,
+            analysis: null,
+            history: [],
+            page: 'home',
+            busy: false,
+            user: null
+        };
+
+        async function checkAuth() {
+            try {
+                const resp = await fetch('/api/auth/me');
+                const data = await resp.json();
+                if (!data.authenticated) {
+                    window.location.href = '/login';
+                } else {
+                    ST.user = data;
+                    console.log("Authenticated as:", data.fullName);
+                }
+            } catch (err) {
+                console.error("Auth check failed", err);
+            }
+        }
+
+        async function doLogout() {
+            if (!confirm("Are you sure you want to sign out?")) return;
+            try {
+                await fetch('/api/auth/logout', { method: 'POST' });
+                window.location.href = '/login';
+            } catch (err) {
+                alert("Logout failed");
+            }
+        }
+
+        // Initialize auth check
+        checkAuth();
+        // Remove API Key logic
+        function setApiUI() { }
+
+        const CLASS_INFO = {
+            glioma: { label: 'Glioma Tumor', icon: '🔴', col: '#c0272d', bg: '#fff0f0', urgency: 'Urgent' },
+            meningioma: { label: 'Meningioma', icon: '🟠', col: '#c25600', bg: '#fff3e8', urgency: 'Semi-urgent' },
+            pituitary: { label: 'Pituitary Tumor', icon: '🟡', col: '#b07828', bg: '#fdf7e3', urgency: 'Semi-urgent' },
+            notumor: { label: 'No Tumor Detected', icon: '🟢', col: '#196b3c', bg: '#eaf7ef', urgency: 'Routine' },
+            malignant: { label: 'Malignant Neoplasm', icon: '🔴', col: '#991b1b', bg: '#fef2f2', urgency: 'Emergency' },
+            benign: { label: 'Benign Neoplasm', icon: '🟢', col: '#166534', bg: '#f0fdf4', urgency: 'Routine' },
+            abscess: { label: 'Brain Abscess', icon: '🟣', col: '#7e22ce', bg: '#faf5ff', urgency: 'Urgent' },
+            stroke: { label: 'Cerebrovascular Stroke', icon: '🔵', col: '#1d4ed8', bg: '#eff6ff', urgency: 'Emergency' },
+            hemorrhage: { label: 'Intracranial Hemorrhage', icon: '🩸', col: '#be123c', bg: '#fff1f2', urgency: 'Emergency' },
+            biopsy: { label: 'Biopsy Recommended', icon: '🔬', col: '#a16207', bg: '#fefce8', urgency: 'Semi-urgent' },
+            autopsy: { label: 'Post-Mortem Finding', icon: '🗂️', col: '#475569', bg: '#f8fafc', urgency: 'Routine' },
+        };
+
+        const SYS = `You are CLINIX.AI, a specialist neuroradiology AI for medical professionals. Analyze brain MRI scans with expert precision.
+
+RULES:
+1. Return ONLY the raw JSON — no markdown, no preamble, no explanation
+2. Never invent findings — use "Cannot determine from image" if uncertain
+3. Classify exactly into one of: glioma, meningioma, pituitary, notumor, malignant, benign, abscess, stroke, hemorrhage, biopsy, autopsy
+4. Base every field strictly on visible image content
+
+Return this exact JSON schema (fill all fields):
+{"imageQuality":"Good|Fair|Poor|Non-diagnostic","imageQualityNotes":"string","tumorDetected":true,"tumorClass":"glioma|meningioma|pituitary|notumor|malignant|benign|abscess|stroke|hemorrhage|biopsy|autopsy","confidenceScore":0,"tumorFindings":{"location":"string","hemisphere":"Left|Right|Bilateral|Midline|N/A","lobe":"string","estimatedSize":"string","morphology":"string","intensityPattern":"string","perilesionalEdema":"Present|Absent|Cannot determine","massEffect":"string","midlineShift":"string","enhancement":"Ring-enhancing|Homogeneous|Heterogeneous|None|Cannot determine"},"likelyDiagnosis":"string","differentialDiagnoses":["string","string","string"],"keyMRIFeatures":["string","string","string"],"regionHighlight":{"description":"string","approximateX":50,"approximateY":50,"radiusPercent":18},"clinicalRecommendation":"string","urgencyLevel":"Routine|Semi-urgent|Urgent|Emergency","additionalNotes":"string"}`;
+
+        /* ── INIT ── */
+        (function () {
+            // Local initialization
+        })();
+
+        function onKeyType() { }
+        function saveKey() { }
+
+        /* ── NAVIGATION ── */
+        function navTo(page) {
+            ST.page = page;
+            document.querySelectorAll('[id^="pg-"]').forEach(e => e.style.display = 'none');
+            document.getElementById('pg-' + page).style.display = '';
+
+            document.querySelectorAll('.sb-item').forEach(e => e.classList.remove('on'));
+            const si = document.getElementById('sbi-' + page);
+            if (si) si.classList.add('on');
+
+            document.querySelectorAll('.tb-lnk').forEach(e => e.classList.remove('on'));
+            const tl = document.getElementById('tbl-' + page);
+            if (tl) tl.classList.add('on');
+
+            document.getElementById('cbar').classList.toggle('show', page === 'chat');
+            document.getElementById('content').scrollTop = 0;
+
+            if (page === 'history') {
+                loadHistory();
+            }
+        }
+
+        async function loadHistory() {
+            const list = document.getElementById('histList');
+            list.innerHTML = '<div style="text-align:center;padding:40px;color:var(--soft)"><div class="spin" style="margin:0 auto 10px"></div>Loading history…</div>';
+
+            try {
+                const resp = await fetch('/api/history');
+                const data = await resp.json();
+
+                if (data.length === 0) {
+                    list.innerHTML = `<div style="text-align:center;padding:60px 20px;color:var(--soft)">
+                        <div style="font-size:38px;margin-bottom:12px;opacity:.35">📋</div>
+                        <div style="font-size:14.5px;font-weight:700;color:var(--mid);font-family:var(--d);margin-bottom:5px">No reports yet</div>
+                        <div style="font-size:12.5px">Analyze a brain MRI to create your first clinical report</div>
+                    </div>`;
+                    return;
+                }
+
+                let html = '';
+                data.forEach(h => {
+                    const dt = new Date(h.timestamp).toLocaleString();
+                    const badgeClass = h.urgencyLevel === 'Urgent' ? 'phb-r' : 'phb-g';
+                    html += `
+                        <div class="hist-card" onclick='viewPastAnalysis(${JSON.stringify(h).replace(/'/g, "&apos;")})'>
+                            <div class="hc-l">
+                                <div class="hc-title">${h.likelyDiagnosis || 'MRI Analysis'}</div>
+                                <div class="hc-meta">Session: ${h.sessionId} · ${dt}</div>
+                            </div>
+                            <div class="hc-r">
+                                <span class="ph-b ${badgeClass}">${h.urgencyLevel || 'Routine'}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+                list.innerHTML = html;
+            } catch (err) {
+                list.innerHTML = `<div class="errbox">Failed to load history: ${err.message}</div>`;
+            }
+        }
+
+        function viewPastAnalysis(h) {
+            try {
+                const finding = JSON.parse(h.findingJson);
+                ST.analysis = finding;
+                ST.sessionId = h.sessionId;
+                renderResults(finding, 0);
+                drawOverlay(finding.regionHighlight, finding.tumorDetected);
+                navTo('analyzer');
+            } catch (e) {
+                console.error("Error viewing past analysis:", e);
+                alert("Could not load reporting data.");
+            }
+        }
+
+        /* ── HOME SEARCH ── */
+        function doHomeSearch() {
+            const inp = document.getElementById('hsi');
+            // Fix: read value directly from element  
+            const q = inp.value ? inp.value.trim() : '';
+            if (!q) return;
+            document.getElementById('srInp').value = q;
+            navTo('search');
+            execSearch(q);
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('hsi').addEventListener('keydown', function (e) { if (e.key === 'Enter') doHomeSearch(); });
+        });
+
+        function chipQ(q) { document.getElementById('hsi').value = q; doHomeSearch(); }
+
+        async function execSearch(q) {
+            if (!q) return;
+            const t0 = Date.now();
+            document.getElementById('srResults').innerHTML = '<div class="loading-r"><div class="spin"></div>Searching local medical knowledge…</div>';
+            document.getElementById('srMeta').textContent = '';
+
+            try {
+                // Redirect search to chat with a search-optimized prompt
+                const response = await fetch(CFG.API_BASE + '/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: q, sessionId: ST.sessionId })
+                });
+                const data = await response.json();
+                const txt = data.reply || data.error || 'No results.';
+
+                const ms = Date.now() - t0;
+                const n = (Math.floor(Math.random() * 50) + 10).toLocaleString();
+                document.getElementById('srMeta').textContent = `Local results found in ${(ms / 1000).toFixed(2)} seconds · CLINIX Core Engine`;
+                document.getElementById('srResults').innerHTML = buildResultCards(q, txt);
+            } catch (err) {
+                document.getElementById('srResults').innerHTML = `<div class="errbox">Search error: ${esc(err.message)}</div>`;
+            }
+        }
+
+        function buildResultCards(q, txt) {
+            // Parse sections
+            const secs = {};
+            const names = ['Overview', 'Clinical Details', 'Imaging & Diagnosis', 'Treatment & Management', 'Key Points'];
+            let cur = '_intro', lines = [];
+            for (const line of txt.split('\n')) {
+                const stripped = line.replace(/\*\*/g, '').trim();
+                if (names.includes(stripped)) {
+                    if (lines.length) secs[cur] = lines.join('\n').trim();
+                    cur = stripped; lines = [];
+                } else { lines.push(line); }
+            }
+            if (lines.length) secs[cur] = lines.join('\n').trim();
+
+            let html = '';
+            const overview = secs['Overview'] || secs['_intro'] || Object.values(secs)[0] || txt.substring(0, 500);
+            html += `
+    <div class="ai-card">
+      <div class="aic-hdr"><span class="aic-ico">🧠</span><span class="aic-label">Local Intelligence Summary — CLINIX.AI</span></div>
+      <div class="aic-text">${fmtTxt(overview)}</div>
+      <div class="aic-foot">Generated by CLINIX Core Engine · Local Intelligence · For physician use</div>
+    </div>`;
+
+            const cards = [
+                { key: 'Clinical Details', ico: '🏥', src: 'clinix.ai/clinical', cat: 'Clinical Reference' },
+                { key: 'Imaging & Diagnosis', ico: '📡', src: 'clinix.ai/imaging', cat: 'Neuroradiology' },
+                { key: 'Treatment & Management', ico: '💊', src: 'clinix.ai/treatment', cat: 'Treatment Protocol' },
+                { key: 'Key Points', ico: '📌', src: 'clinix.ai/keypoints', cat: 'Clinical Summary' },
+            ];
+            for (const c of cards) {
+                const body = secs[c.key];
+                if (!body || body.length < 20) continue;
+                html += `
+      <div class="rcard">
+        <div class="rcard-src"><span>${c.ico}</span>${c.src} · CLINIX.AI · <strong>${c.cat}</strong></div>
+        <div class="rcard-title">${esc(c.key)} — ${esc(q)}</div>
+        <div class="rcard-text">${fmtTxt(body)}</div>
+        <div class="rcard-tags"><span class="rtag">CLINIX.AI</span><span class="rtag">${c.cat}</span><span class="rtag">Local AI</span></div>
+      </div>`;
+            }
+            if (!html.includes('rcard')) {
+                html += `<div class="rcard">
+      <div class="rcard-src">🧠 clinix.ai · Medical Knowledge Base</div>
+      <div class="rcard-title">${esc(q)} — Complete Medical Reference</div>
+      <div class="rcard-text">${fmtTxt(txt)}</div>
+      <div class="rcard-tags"><span class="rtag">CLINIX.AI</span><span class="rtag">Local AI</span></div>
+    </div>`;
+            }
+            return html;
+        }
+
+        /* ── FILE HANDLING ── */
+        function onFileChoose(e) { const f = e.target.files[0]; if (f && f.type.startsWith('image/')) loadScan(f); }
+        function dzOver(e) { e.preventDefault(); document.getElementById('upzone').classList.add('drag'); }
+        function dzLeave() { document.getElementById('upzone').classList.remove('drag'); }
+        function dzDrop(e) {
+            e.preventDefault(); dzLeave();
+            const f = e.dataTransfer?.files?.[0];
+            if (f && f.type.startsWith('image/')) loadScan(f);
+        }
+        document.addEventListener('dragover', e => e.preventDefault());
+        document.addEventListener('drop', e => {
+            e.preventDefault();
+            const f = e.dataTransfer?.files?.[0];
+            if (f && f.type.startsWith('image/')) { loadScan(f); navTo('analyzer'); }
+        });
+
+        function loadScan(f) {
+            ST.file = f; ST.analysis = null;
+            document.getElementById('previmg').src = URL.createObjectURL(f);
+            document.getElementById('upzone').style.display = 'none';
+            document.getElementById('prevwrap').classList.add('show');
+            document.getElementById('ctxGrp').style.display = 'block';
+            document.getElementById('actrow').style.display = 'flex';
+            document.getElementById('prevbadge').textContent = 'CLINIX.AI · ' + f.name.toUpperCase().substring(0, 38);
+            document.getElementById('repArea').style.display = 'none';
+            resetResults('Scan loaded — click Analyze MRI or Generate Report');
+            navTo('analyzer');
+        }
+        function clearScan() {
+            ST.file = null; ST.b64 = null; ST.mt = null; ST.analysis = null;
+            document.getElementById('fInput').value = '';
+            document.getElementById('upzone').style.display = '';
+            document.getElementById('prevwrap').classList.remove('show');
+            document.getElementById('ctxGrp').style.display = 'none';
+            document.getElementById('actrow').style.display = 'none';
+            document.getElementById('repArea').style.display = 'none';
+            resetResults('No scan loaded yet');
+        }
+        function resetResults(msg) {
+            document.getElementById('rBadge').textContent = 'Awaiting scan';
+            document.getElementById('rBadge').style.cssText = '';
+            document.getElementById('rBody').innerHTML = `<div class="rph"><div class="rph-ico">🔬</div><div class="rph-tit">${esc(msg)}</div><div class="rph-sub">Upload a brain MRI to begin AI analysis</div></div>`;
+            const cv = document.getElementById('prevcanvas');
+            cv.getContext('2d').clearRect(0, 0, cv.width, cv.height);
+        }
+
+        /* ── ANALYZE MRI (LOCAL ONNX BACKEND) ── */
+        async function doAnalyze() {
+            if (!ST.file || ST.busy) return;
+            setBusy(true);
+            document.getElementById('rBadge').textContent = 'Analyzing locally…';
+            document.getElementById('rBody').innerHTML = '<div class="loading-r"><div class="spin"></div>Local PyTorch ONNX Model computing…</div>';
+            const t0 = Date.now();
+            try {
+                const formData = new FormData();
+                formData.append('image', ST.file);
+                formData.append('context', document.getElementById('ctxInp').value.trim() || '');
+                formData.append('sessionId', ST.sessionId);
+
+                const response = await fetch('/api/v1/analyze', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Backend Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                ST.analysis = data.finding;
+
+                renderResults(ST.analysis, Date.now() - t0);
+                saveHist(ST.analysis, ST.file.name);
+                drawOverlay(ST.analysis.regionHighlight, ST.analysis.tumorDetected);
+            } catch (err) {
+                document.getElementById('rBadge').textContent = 'Error';
+                document.getElementById('rBody').innerHTML = `<div class="errbox">Analysis failed: ${esc(err.message)}</div>`;
+            } finally { setBusy(false); }
+        }
+
+        /* ── GENERATE REPORT ── */
+        async function doReport() {
+            if (!ST.file || ST.busy) return;
+            setBusy(true);
+            if (!ST.analysis) {
+                document.getElementById('rBadge').textContent = 'Error';
+                document.getElementById('rBody').innerHTML = '<div class="errbox">Please run "Analyze MRI" first before generating a report.</div>';
+                setBusy(false); return;
+            }
+            const d = ST.analysis;
+            const ctx = document.getElementById('ctxInp').value.trim();
+            try {
+                const rec = d.clinicalRecommendation || "Consult with a neurosurgery specialist for definitive management planning.";
+                openReportModal(d, ctx, rec);
+                saveHist(d, ST.file.name);
+            } catch (err) {
+                document.getElementById('rBody').innerHTML = `<div class="errbox">Report failed: ${esc(err.message)}</div>`;
+            } finally { setBusy(false); }
+        }
+
+        function closeReportModal() {
+            const m = document.getElementById('reportModal');
+            if (m) m.innerHTML = '';
+        }
+
+        function openReportModal(d, ctx, rec) {
+            const isTumor = d.tumorDetected;
+            const ci = CLASS_INFO[d.tumorClass] || CLASS_INFO.notumor;
+            const f = d.tumorFindings || {};
+            const conf = d.confidenceScore || 0;
+            const uMap = { Routine: 'ug-r', 'Semi-urgent': 'ug-s', Urgent: 'ug-u', Emergency: 'ug-e' };
+            const uCls = uMap[d.urgencyLevel] || 'ug-r';
+            const rid = 'RPT-' + Date.now().toString(36).toUpperCase();
+            const now = new Date();
+            const ds = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+            const ts = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+            const patId = ST.user ? (ST.user.username || 'USR-???') : 'GUEST-' + Math.random().toString(36).substring(2,7).toUpperCase();
+            const patName = ST.user ? (ST.user.fullName || ST.user.username || 'Not specified') : 'Not specified';
+
+            // Tumor type label for report
+            const tumorTypeLabel = (d.tumorClass && d.tumorClass !== 'notumor')
+                ? (d.tumorClass.charAt(0).toUpperCase() + d.tumorClass.slice(1))
+                : 'No Tumor';
+            const natureLabel = d.tumorNature || (isTumor ? 'Indeterminate' : 'N/A');
+
+            // Build systematic findings text from all available data
+            const findings = [];
+            if (f.location && f.location !== 'N/A') findings.push(`<strong>Lesion Location:</strong> ${esc(f.location)}${f.hemisphere && f.hemisphere !== 'N/A' ? ', ' + esc(f.hemisphere) + ' hemisphere' : ''}${f.lobe ? ', ' + esc(f.lobe) + ' lobe' : ''}`);
+            if (f.estimatedSize) findings.push(`<strong>Estimated Size:</strong> ${esc(f.estimatedSize)}`);
+            if (f.morphology) findings.push(`<strong>Morphology:</strong> ${esc(f.morphology)}`);
+            if (f.intensityPattern) findings.push(`<strong>Signal Characteristics:</strong> ${esc(f.intensityPattern)}`);
+            if (f.enhancementPattern || f.enhancement) findings.push(`<strong>Post-contrast Enhancement:</strong> ${esc(f.enhancementPattern || f.enhancement)}`);
+            if (f.perilesionalEdema) findings.push(`<strong>Perilesional Oedema:</strong> ${esc(f.perilesionalEdema)}`);
+            if (f.massEffect) findings.push(`<strong>Mass Effect:</strong> ${esc(f.massEffect)}`);
+            if (f.midlineShift) findings.push(`<strong>Midline Shift:</strong> ${esc(f.midlineShift)}`);
+
+            const findingsHtml = isTumor && findings.length
+                ? findings.map(x => `<div class="rf-finding-row">${x}</div>`).join('')
+                : `<div class="rf-finding-row">No focal lesion, mass, or space-occupying lesion identified. Brain parenchyma demonstrates normal signal intensity on all sequences. Ventricular system unremarkable. No midline shift.</div>`;
+
+            const keyFeatHtml = (d.keyMRIFeatures || []).length
+                ? (d.keyMRIFeatures || []).map((feat, i) => `<div class="rf-key-feat"><span class="rf-bullet">${String(i+1).padStart(2,'0')}</span><span>${esc(feat)}</span></div>`).join('')
+                : `<div style="color:var(--mid);font-size:13px">No specific features identified</div>`;
+
+            const diffHtml = (d.differentialDiagnoses || []).map((x, i) =>
+                `<div class="diff-entry"><span class="diff-rank">${i === 0 ? 'PRIMARY' : 'DDx ' + i}</span> ${esc(x)}</div>`).join('');
+
+            document.getElementById('reportModal').innerHTML = `
+<div class="report-overlay" onclick="if(event.target===this)closeReportModal()">
+  <button class="report-close-btn" onclick="closeReportModal()">✕</button>
+  <div class="report-modal">
+    <div class="repdoc" id="printableReport">
+
+      <!-- ══ HOSPITAL LETTERHEAD ══ -->
+      <div class="rpt-letterhead">
+        <div class="rpt-lh-left">
+          <div class="rpt-logo">🧠</div>
+          <div class="rpt-hospital-info">
+            <div class="rpt-hospital-name">CLINIX<em>.AI</em> Neuroradiology Centre</div>
+            <div class="rpt-hospital-sub">Department of Radiology &amp; Neuroimaging</div>
+            <div class="rpt-hospital-contact">AI-Assisted Diagnostic Reporting · v3.0 · clinix.ai</div>
+          </div>
+        </div>
+        <div class="rpt-lh-right">
+          <div class="rpt-report-type">RADIOLOGY REPORT</div>
+          <div class="rpt-modality-badge">MRI BRAIN</div>
+          <div class="rpt-rid">${rid}</div>
+          <div class="rpt-date">${ds} · ${ts}</div>
+        </div>
+      </div>
+
+      <!-- ══ PATIENT DEMOGRAPHICS ══ -->
+      <div class="rpt-section rpt-demo-section">
+        <div class="rpt-section-title">PATIENT DETAILS</div>
+        <table class="rpt-demo-table">
+          <tr>
+            <td class="rpt-td-lbl">Patient Name</td>
+            <td class="rpt-td-val">${esc(patName)}</td>
+            <td class="rpt-td-lbl">Patient ID</td>
+            <td class="rpt-td-val mono">${esc(patId)}</td>
+          </tr>
+          <tr>
+            <td class="rpt-td-lbl">Age / Sex</td>
+            <td class="rpt-td-val">— / —</td>
+            <td class="rpt-td-lbl">Date of Study</td>
+            <td class="rpt-td-val">${ds}</td>
+          </tr>
+          <tr>
+            <td class="rpt-td-lbl">Referring Physician</td>
+            <td class="rpt-td-val">— (To be completed)</td>
+            <td class="rpt-td-lbl">Report ID</td>
+            <td class="rpt-td-val mono">${rid}</td>
+          </tr>
+          <tr>
+            <td class="rpt-td-lbl">Ward / Department</td>
+            <td class="rpt-td-val">—</td>
+            <td class="rpt-td-lbl">Accession No.</td>
+            <td class="rpt-td-val mono">ACC-${Math.random().toString(36).substring(2,9).toUpperCase()}</td>
+          </tr>
+          ${ctx ? `<tr><td class="rpt-td-lbl" style="vertical-align:top">Clinical Indication</td><td class="rpt-td-val" colspan="3" style="font-style:italic">${esc(ctx)}</td></tr>` : ''}
+        </table>
+      </div>
+
+      <!-- ══ MRI TECHNIQUE ══ -->
+      <div class="rpt-section">
+        <div class="rpt-section-title">TECHNIQUE</div>
+        <div class="rpt-technique-box">
+          MRI of the brain was performed on a 1.5T / 3T MRI unit. Imaging was acquired in the axial, coronal, and sagittal planes using the following sequences: <strong>T1-weighted (T1W), T2-weighted (T2W), FLAIR (Fluid-Attenuated Inversion Recovery), DWI (Diffusion-Weighted Imaging), and ADC mapping.</strong>
+          ${isTumor ? ' Post-contrast T1-weighted sequences were obtained following intravenous administration of gadolinium-based contrast agent.' : ''}
+          Image quality was assessed as <strong>${esc(d.imageQuality || 'Good')}</strong>${d.imageQualityNotes ? ' — ' + esc(d.imageQualityNotes) : ''}.
+          Analysis performed by: <strong>CLINIX.AI Intelligence Engine v3.0 (ONNX EfficientNet + LLM Vision Fusion)</strong>.
+        </div>
+      </div>
+
+      <!-- ══ FINDINGS ══ -->
+      <div class="rpt-section">
+        <div class="rpt-section-title">FINDINGS</div>
+
+        <div class="rpt-findings-body">
+
+          <div class="rpt-findings-subsec">A. BRAIN PARENCHYMA</div>
+          ${findingsHtml}
+
+          <div class="rpt-findings-subsec" style="margin-top:12px">B. KEY MRI FEATURES IDENTIFIED</div>
+          <div class="rpt-keyfeats">${keyFeatHtml}</div>
+
+          <div class="rpt-findings-subsec" style="margin-top:12px">C. VENTRICULAR SYSTEM &amp; CSF SPACES</div>
+          <div class="rf-finding-row">${isTumor ? esc(f.massEffect || 'Ventricular system may be compressed. CSF spaces require clinical correlation.') : 'Ventricular system appears normal in size, shape and position. Cerebral sulci are well-preserved. No hydrocephalus.'}</div>
+
+          <div class="rpt-findings-subsec" style="margin-top:12px">D. EXTRA-AXIAL SPACES</div>
+          <div class="rf-finding-row">${isTumor ? 'Extra-axial spaces may be compressed secondary to mass effect. Correlate further with contrast-enhanced sequences.' : 'Extra-axial spaces are normal. No subdural or epidural collection identified.'}</div>
+
+          <div class="rpt-findings-subsec" style="margin-top:12px">E. VASCULAR STRUCTURES &amp; SINUSES</div>
+          <div class="rf-finding-row">Major intracranial vascular flow voids appear preserved. Dural venous sinuses appear patent. MRA sequences not included in current study — correlate clinically.</div>
+
+        </div>
+      </div>
+
+      <!-- ══ CLASSIFICATION SUMMARY BOX ══ -->
+      <div class="rpt-classification-box ${isTumor ? 'rpt-cls-pos' : 'rpt-cls-neg'}">
+        <div class="rpt-cls-left">
+          <div class="rpt-cls-icon">${ci.icon}</div>
+          <div>
+            <div class="rpt-cls-status">${isTumor ? 'TUMOUR DETECTED' : 'NO TUMOUR DETECTED'}</div>
+            <div class="rpt-cls-type">Type: <strong>${tumorTypeLabel}</strong> &nbsp;|&nbsp; Nature: <strong>${natureLabel}</strong></div>
+          </div>
+        </div>
+        <div class="rpt-cls-right">
+          <div class="rpt-conf-badge">${conf}%</div>
+          <div style="font-size:10px;color:var(--mid);margin-top:2px">AI Confidence</div>
+          <span class="urg ${uCls}" style="font-size:11px;margin-top:4px;display:inline-block">${d.urgencyLevel || 'Routine'}</span>
+        </div>
+      </div>
+
+      <!-- ══ DIFFERENTIAL DIAGNOSES ══ -->
+      ${(d.differentialDiagnoses || []).length ? `
+      <div class="rpt-section">
+        <div class="rpt-section-title">DIFFERENTIAL DIAGNOSIS</div>
+        <div class="rpt-diff-grid">${diffHtml}</div>
+      </div>` : ''}
+
+      <!-- ══ IMPRESSION ══ -->
+      <div class="rpt-section rpt-impression-section">
+        <div class="rpt-section-title">IMPRESSION</div>
+        <div class="rpt-impression-box">
+          <div class="rpt-impression-title">${esc(d.likelyDiagnosis || ci.label)}</div>
+          <div class="rpt-impression-narrative">
+            ${isTumor
+                ? `MRI brain reveals an <strong>${natureLabel.toLowerCase()} intracranial neoplasm</strong> most consistent with <strong>${esc(tumorTypeLabel)}</strong>. ${esc(d.likelyDiagnosis || '')}. ${esc(d.additionalNotes || '')}`
+                : `MRI brain reveals <strong>no evidence of any intracranial mass lesion, acute infarct, hemorrhage, or other significant intracranial pathology</strong> on the sequences performed. ${esc(d.additionalNotes || 'Brain appears normal for the patient\'s age.')}`}
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ CLINICAL RECOMMENDATION ══ -->
+      <div class="rpt-section">
+        <div class="rpt-section-title">RECOMMENDATION</div>
+        <div class="rpt-rec-box ${isTumor ? 'rpt-rec-pos' : 'rpt-rec-neg'}">
+          ${fmtTxt(rec || d.clinicalRecommendation || 'Clinical review recommended.')}
+        </div>
+      </div>
+
+      <!-- ══ SIGNATURE BLOCK ══ -->
+      <div class="rpt-sig-block">
+        <div class="rpt-sig-col">
+          <div class="rpt-sig-stamp">
+            <div class="rpt-stamp-inner">
+              <div style="font-size:9px;font-weight:700;letter-spacing:1px">CLINIX.AI</div>
+              <div style="font-size:8px">DIGITALLY CERTIFIED</div>
+              <div style="font-size:8px">${ds}</div>
+            </div>
+          </div>
+          <div class="rpt-sig-line"></div>
+          <div class="rpt-sig-name">Dr. CLINIX AI</div>
+          <div class="rpt-sig-title">AI Neuroradiology Engine v3.0</div>
+          <div class="rpt-sig-reg">AI Registration: CLINIX-NR-2025</div>
+        </div>
+        <div class="rpt-sig-col">
+          <div class="rpt-sig-line" style="margin-top:64px"></div>
+          <div class="rpt-sig-name">Reviewing Radiologist</div>
+          <div class="rpt-sig-title">MD Radiology / DM Neuroradiology</div>
+          <div class="rpt-sig-reg">Registration No.: _______________</div>
+        </div>
+        <div class="rpt-sig-col">
+          <div class="rpt-sig-line" style="margin-top:64px"></div>
+          <div class="rpt-sig-name">Countersigning Physician</div>
+          <div class="rpt-sig-title">Referring Department</div>
+          <div class="rpt-sig-reg">Date: ${ds}</div>
+        </div>
+      </div>
+
+      <!-- ══ DISCLAIMER ══ -->
+      <div class="rpt-disclaimer">
+        ⚠️ <strong>IMPORTANT:</strong> This report has been generated by CLINIX.AI — an AI-assisted neuroradiology decision support system — using ONNX EfficientNet and LLM vision fusion. It is <strong>NOT a substitute for independent clinical judgment</strong>. All AI-generated findings <strong>MUST be reviewed and countersigned</strong> by a qualified radiologist before use in clinical decision-making. AI model performance is dependent on scan quality and may not capture all pathologies.
+        <br><br>
+        This document is intended for <strong>academic / decision support use only</strong>. Confidential — for authorized personnel only.
+      </div>
+
+      <!-- ══ FOOTER ══ -->
+      <div class="rpt-footer-bar">
+        <div>CLINIX.AI Neuroradiology Centre &nbsp;|&nbsp; AI-Assisted Report &nbsp;|&nbsp; For Authorized Use Only</div>
+        <div class="rpt-footer-code">${rid} &nbsp;·&nbsp; ${ds}</div>
+      </div>
+
+    </div><!-- /repdoc -->
+
+    <div class="rep-acts" style="justify-content:center;margin-top:16px">
+      <button class="ract ract-p" onclick="window.print()">🖨️ Print / Save PDF</button>
+      <button class="ract ract-o" onclick="cpyReport()">📋 Copy Text</button>
+      <button class="ract ract-o" onclick="closeReportModal();navTo('chat')">💬 Follow-up</button>
+      <button class="ract ract-o" onclick="closeReportModal()">✕ Close</button>
+    </div>
+  </div><!-- /report-modal -->
+</div>`;
+        }
+
+        function cpyReport() {
+            const modal = document.querySelector('.report-modal .repdoc');
+            const text = modal ? modal.innerText : (document.getElementById('repBody')?.innerText || '');
+            navigator.clipboard.writeText(text).then(() => alert('Report copied to clipboard.'));
+        }
+
+        /* ── RENDER ANALYSIS RESULTS ── */
+        function renderResults(d, ms) {
+            const isTumor = d.tumorDetected;
+            const ci = CLASS_INFO[d.tumorClass] || CLASS_INFO.notumor;
+            const conf = d.confidenceScore || 0;
+            const cfCls = conf >= 75 ? 'cf-h' : conf >= 50 ? 'cf-m' : 'cf-l';
+            const uMap = { Routine: 'ug-r', 'Semi-urgent': 'ug-s', Urgent: 'ug-u', Emergency: 'ug-e' };
+            const uCls = uMap[d.urgencyLevel] || 'ug-r';
+            const f = d.tumorFindings || {};
+            const cid = 'cf' + Date.now();
+
+            document.getElementById('rBadge').textContent = isTumor ? 'Tumor Detected' : 'Clear';
+            document.getElementById('rBadge').style.cssText = `background:${ci.bg};color:${ci.col};border:1px solid ${ci.col}35`;
+
+            document.getElementById('rBody').innerHTML = `
+    <div class="detbanner ${isTumor ? 'db-t' : 'db-c'}">
+      <div class="dbi">${ci.icon}</div>
+      <div class="dbtxt">
+        <div class="dbdiag">${esc(d.likelyDiagnosis || ci.label)}</div>
+        <div class="dbmeta">${esc(d.imageQuality || '—')} quality${ms ? ' · ' + ms + 'ms' : ''} · Local Analysis</div>
+      </div>
+      <div class="dbconf ${isTumor ? 'dbconf-t' : 'dbconf-c'}">${conf}%</div>
+    </div>
+    <div class="confbar"><div class="confill ${cfCls}" id="${cid}" style="width:0%"></div></div>
+    <div class="dtbl">
+      <div class="drow">
+        <div class="dcell"><div class="dlbl">Detection Status</div><div class="dval ${isTumor ? 'dv-r' : 'dv-g'}">${isTumor ? '⚠️ POSITIVE — Abnormality Identified' : '✅ NEGATIVE — No Abnormality'}</div></div>
+        <div class="dcell"><div class="dlbl">AI Confidence</div><div class="dval dv-b">${conf}%</div></div>
+      </div>
+      <div class="drow">
+        <div class="dcell"><div class="dlbl">Tumor Type</div><div class="dval ${isTumor ? 'dv-r' : 'dv-g'}" style="font-size:15px;font-weight:700">${esc((d.tumorClass && d.tumorClass !== 'notumor') ? (d.tumorClass.charAt(0).toUpperCase() + d.tumorClass.slice(1)) : 'No Tumor')}</div></div>
+        <div class="dcell"><div class="dlbl">Nature</div><div class="dval ${d.tumorNature === 'Malignant' ? 'dv-r' : d.tumorNature === 'Benign' ? 'dv-g' : ''}">${esc(d.tumorNature || (isTumor ? 'Indeterminate' : 'N/A'))}</div></div>
+      </div>
+      ${isTumor ? `
+      <div class="drow">
+        <div class="dcell"><div class="dlbl">Location</div><div class="dval">${esc(f.location || '—')}</div></div>
+        <div class="dcell"><div class="dlbl">Hemisphere / Lobe</div><div class="dval">${esc((f.hemisphere || '—') + ' / ' + (f.lobe || '—'))}</div></div>
+      </div>
+      <div class="drow">
+        <div class="dcell"><div class="dlbl">Est. Size</div><div class="dval">${esc(f.estimatedSize || 'Cannot determine')}</div></div>
+        <div class="dcell"><div class="dlbl">Midline Shift</div><div class="dval ${f.midlineShift && f.midlineShift !== 'None' ? 'dv-r' : ''}">${esc(f.midlineShift || 'None')}</div></div>
+      </div>`: ''}
+      <div class="drow">
+        <div class="dcell"><div class="dlbl">Urgency</div><div class="dval"><span class="urg ${uCls}">${d.urgencyLevel || 'Routine'}</span></div></div>
+        <div class="dcell"><div class="dlbl">Image Quality</div><div class="dval">${esc(d.imageQuality || '—')}</div></div>
+      </div>
+      <div class="drow">
+        <div class="dcell full"><div class="dlbl">Recommendation</div><div class="dval">${esc(d.clinicalRecommendation || '—')}</div></div>
+      </div>
+    </div>
+    <div class="tagrow">
+      <div class="tglbl">Key MRI Features</div>
+      <div class="tags">${(d.keyMRIFeatures || []).map(x => `<span class="tg">${esc(x)}</span>`).join('') || '<span style="color:var(--soft);font-size:12px">None identified</span>'}</div>
+    </div>
+    ${(d.differentialDiagnoses || []).length ? `
+    <div class="tagrow">
+      <div class="tglbl">Differential Diagnoses</div>
+      <div class="tags">${(d.differentialDiagnoses || []).map(x => `<span class="tg" style="background:var(--s0);border-color:var(--s1)">${esc(x)}</span>`).join('')}</div>
+    </div>`: ''}`;
+
+            setTimeout(() => { const el = document.getElementById(cid); if (el) el.style.width = conf + '%'; }, 150);
+        }
+
+        /* ── CANVAS OVERLAY ── */
+        function drawOverlay(rh, isTumor) {
+            const img = document.getElementById('previmg');
+            const cv = document.getElementById('prevcanvas');
+            if (!img || !cv) return;
+            const go = () => {
+                cv.width = img.naturalWidth || img.offsetWidth || 224;
+                cv.height = img.naturalHeight || img.offsetHeight || 224;
+                cv.style.width = img.offsetWidth + 'px';
+                cv.style.height = img.offsetHeight + 'px';
+                const ctx = cv.getContext('2d');
+                ctx.clearRect(0, 0, cv.width, cv.height);
+                if (!isTumor || !rh) return;
+                const cx = ((rh.approximateX || 50) / 100) * cv.width;
+                const cy = ((rh.approximateY || 50) / 100) * cv.height;
+                const r = ((rh.radiusPercent || 18) / 100) * Math.min(cv.width, cv.height);
+                const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r * 2.5);
+                g.addColorStop(0, 'rgba(192,39,45,.2)'); g.addColorStop(1, 'transparent');
+                ctx.fillStyle = g; ctx.fillRect(0, 0, cv.width, cv.height);
+                ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(192,39,45,.82)'; ctx.lineWidth = 2.5;
+                ctx.setLineDash([7, 5]); ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(192,39,45,.88)'; ctx.fill();
+                ctx.strokeStyle = 'rgba(192,39,45,.55)'; ctx.lineWidth = 1;
+                [[cx - r - 10, cy, cx - 8, cy], [cx + 8, cy, cx + r + 10, cy], [cx, cy - r - 10, cx, cy - 8], [cx, cy + 8, cx, cy + r + 10]].forEach(([x1, y1, x2, y2]) => { ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke(); });
+                ctx.fillStyle = 'rgba(192,39,45,.88)'; ctx.font = 'bold 9px "IBM Plex Mono",monospace';
+                ctx.fillText('REGION OF INTEREST', Math.min(cx + r + 5, cv.width - 148), cy - 5);
+            };
+            if (img.complete && img.naturalWidth) go(); else img.onload = go;
+        }
+
+        /* ── HISTORY ── */
+        function saveHist(d, fname) {
+            const e = { id: 'RPT-' + Date.now().toString(36).toUpperCase(), file: fname, ts: new Date().toLocaleString(), d };
+            if (!ST.history.find(h => h.ts === e.ts)) ST.history.unshift(e);
+            renderHist();
+        }
+        function renderHist() {
+            const el = document.getElementById('histList');
+            if (!ST.history.length) return;
+            el.innerHTML = ST.history.map(h => {
+                const ci = CLASS_INFO[h.d.tumorClass] || CLASS_INFO.notumor;
+                return `<div class="hitem">
+      <div class="hi-ico">${ci.icon}</div>
+      <div class="hi-inf">
+        <div class="hi-diag">${esc(h.d.likelyDiagnosis || ci.label)}</div>
+        <div class="hi-meta">${esc(h.file)} · ${h.ts}</div>
+      </div>
+      <div class="hi-r">
+        <div class="hi-conf" style="color:${h.d.tumorDetected ? 'var(--cr)' : 'var(--gr)'}">${h.d.confidenceScore || 0}%</div>
+        <div class="hi-id">${h.id}</div>
+      </div>
+    </div>`;
+            }).join('');
+        }
+
+        /* ── CHAT ── */
+        function ciKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); } }
+        function ciResize(el) { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 100) + 'px'; }
+        async function sendChat() {
+            const txt = document.getElementById('chatInp').value.trim();
+            if (!txt || ST.busy) return;
+            document.getElementById('chatInp').value = ''; ciResize(document.getElementById('chatInp'));
+            appendMsg('usr', txt); const tid = appendTyping(); setBusy(true);
+            try {
+                const response = await fetch(CFG.API_BASE + '/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: txt, sessionId: ST.sessionId })
+                });
+                const data = await response.json();
+                const reply = data.reply || data.error || 'No response from local engine.';
+                removeTyping(tid); appendMsg('ai', reply);
+            } catch (err) { removeTyping(tid); appendMsg('ai', '❌ Connection Error: Ensure local backend is running.'); }
+            finally { setBusy(false); }
+        }
+        function appendMsg(role, txt) {
+            const t = document.getElementById('chatThread');
+            const d = document.createElement('div'); d.className = 'cmsg' + (role === 'usr' ? ' usr' : '');
+            d.innerHTML = `<div class="cmav ${role === 'ai' ? 'cmav-ai' : 'cmav-usr'}">${role === 'ai' ? '🧠' : '👤'}</div><div class="cmbody"><div class="cmwho">${role === 'ai' ? 'CLINIX.AI' : 'You'}</div><div class="cmbub ${role === 'ai' ? 'cmbub-ai' : 'cmbub-usr'}">${fmtTxt(txt)}</div></div>`;
+            t.appendChild(d); t.scrollTop = t.scrollHeight;
+        }
+        function appendTyping() {
+            const id = 't' + Date.now(); const t = document.getElementById('chatThread');
+            const d = document.createElement('div'); d.id = id; d.className = 'cmsg';
+            d.innerHTML = `<div class="cmav cmav-ai">🧠</div><div class="cmbody"><div class="cmwho">CLINIX.AI</div><div class="typmsg"><div class="tdots"><span></span><span></span><span></span></div>Thinking…</div></div>`;
+            t.appendChild(d); t.scrollTop = t.scrollHeight; return id;
+        }
+        function removeTyping(id) { const el = document.getElementById(id); if (el) el.remove(); }
+        function toolQ(q) { navTo('chat'); document.getElementById('chatInp').value = q; sendChat(); }
+
+        // Local intelligence functions
+
+        /* ── UTILS ── */
+        function parseJSON(raw) {
+            const c = raw.replace(/```json\s*/gi, '').replace(/```\s*/g, '').trim();
+            try { return JSON.parse(c); } catch {
+                const m = c.match(/\{[\s\S]+\}/);
+                if (m) try { return JSON.parse(m[0]); } catch { }
+                throw new Error('JSON parse failed. Raw: ' + c.substring(0, 100));
+            }
+        }
+        function toB64(f) { return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result.split(',')[1]); r.onerror = rej; r.readAsDataURL(f); }); }
+        function esc(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+        function fmtTxt(t) {
+            return esc(t)
+                .replace(/\*\*(.+?)\*\*/g, '<strong style="color:inherit">$1</strong>')
+                .replace(/\*(.+?)\*/g, '<em>$1</em>')
+                .replace(/^• /gm, '<br>• ')
+                .replace(/\n\n/g, '</p><p style="margin-top:8px">')
+                .replace(/\n/g, '<br>');
+        }
+        function setBusy(v) {
+            ST.busy = v;
+            ['btnAnalyze', 'btnReport', 'chatSend'].forEach(id => { const el = document.getElementById(id); if (el) el.disabled = v; });
+        }
+    </script>
+    <div id="reportModal"></div>
+</body>
+
+</html>

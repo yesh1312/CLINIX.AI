@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Lab | CLINIX.AI</title>
+    <link rel="stylesheet" href="/css/neuro-ai.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="neuro-lab">
+    <aside class="sidebar">
+        <div class="logo-zone">
+            <div class="logo-badge">
+                <div class="logo-icon">🧠</div>
+                <div class="logo-text">CLINIX.AI</div>
+            </div>
+            <div
+                style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; padding-left: 46px;">
+                Neuro-Diagnostic Engine v1.5
+            </div>
+        </div>
+
+        <div style="padding: 20px;">
+            <div
+                style="font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 12px;">
+                Monitoring Status</div>
+            <div
+                style="background: rgba(0, 230, 118, 0.06); border: 1px solid rgba(0, 230, 118, 0.2); border-radius: 8px; padding: 10px;">
+                <div
+                    style="display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10px; color: var(--accent-green);">
+                    <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-green);"></span>
+                    SYSTEM STANDBY
+                </div>
+            </div>
+        </div>
+
+        <nav style="padding: 0 20px;">
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 8px;"><a href="/"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 13px;">Home</a></li>
+                <li style="margin-bottom: 8px;"><a href="/research"
+                        style="color: var(--text-secondary); text-decoration: none; font-size: 13px;">Research</a></li>
+            </ul>
+        </nav>
+
+        <div style="margin-top: auto; padding: 20px; border-top: 1px solid var(--border);">
+            <div
+                style="background: rgba(255, 140, 66, 0.06); border: 1px solid rgba(255, 140, 66, 0.25); border-radius: 8px; padding: 10px; font-size: 10px; color: var(--accent-orange); line-height: 1.5;">
+                <strong>MEDICAL DISCLAIMER</strong>
+                AI-assisted findings must be reviewed by a certified radiologist.
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-lab">
+        <header class="chat-header">
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="display: flex; flex-direction: column;">
+                    <span style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">SESSION
+                        ACTIVE</span>
+                    <span id="sessionIdDisplay"
+                        style="font-size: 13px; color: var(--accent-cyan); font-family: var(--font-mono);">SN-WAITING</span>
+                </div>
+            </div>
+            <div style="display: flex; gap: 20px;">
+                <div style="text-align: center;">
+                    <div id="analysisCnt" style="font-family: var(--font-mono); font-size: 14px; font-weight: 700;">0
+                    </div>
+                    <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Scans</div>
+                </div>
+                <div style="text-align: center;">
+                    <div id="lastConf"
+                        style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--accent-teal);">
+                        —</div>
+                    <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Confidence</div>
+                </div>
+            </div>
+        </header>
+
+        <div id="chatMessages" class="chat-messages">
+            <div id="welcomeScreen" class="welcome-screen">
+                <div class="welcome-orb">🧠</div>
+                <h1 style="font-family: var(--font-serif); font-size: 32px; font-style: italic;">Welcome to <span
+                        style="color: var(--accent-cyan); font-style: normal; font-family: var(--font-mono);">CLINIX.AI</span>
+                </h1>
+                <p style="color: var(--text-secondary); max-width: 480px; font-size: 15px;">Advanced neural diagnostics
+                    for brain MRI analysis. Upload a scan to initiate our zero-hallucination analysis protocol.</p>
+                <div style="display: flex; gap: 14px; width: 100%; max-width: 580px;">
+                    <div
+                        style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: left;">
+                        <div
+                            style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-cyan); margin-bottom: 8px;">
+                            STEP 01</div>
+                        <div style="font-size: 12px; font-weight: 600;">Upload Scan</div>
+                    </div>
+                    <div
+                        style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: left;">
+                        <div
+                            style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-cyan); margin-bottom: 8px;">
+                            STEP 02</div>
+                        <div style="font-size: 12px; font-weight: 600;">Neural Analysis</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="chat-input-area">
+            <div id="uploadPreview"
+                style="display: none; align-items: center; gap: 12px; padding: 10px; background: var(--bg-card); border: 1px solid var(--border-bright); border-radius: 10px; margin-bottom: 12px;">
+                <img id="previewThumb" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;">
+                <div style="flex: 1;">
+                    <div id="previewName" style="font-size: 12px; font-weight: 600;">mri_scan_01.jpg</div>
+                    <div id="previewSize" style="font-size: 10px; color: var(--text-muted);">Ready for analysis</div>
+                </div>
+                <button onclick="clearUpload()"
+                    style="background: transparent; border: none; color: var(--accent-red); cursor: pointer;">✕</button>
+            </div>
+
+            <div class="input-wrapper">
+                <button id="uploadBtn" class="btn-icon">📎</button>
+                <textarea id="chatInput" placeholder="Describe clinical context or ask a question..."
+                    rows="1"></textarea>
+                <button id="sendBtn" class="btn-icon btn-send">➔</button>
+            </div>
+            <input type="file" id="fileInput" hidden accept="image/*">
+        </section>
+    </main>
+
+    <script src="/js/app.js"></script>
+</body>
+
+</html>

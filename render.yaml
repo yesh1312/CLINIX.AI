@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: clinix-ai
+    runtime: docker
+    plan: free # Can be upgraded if more RAM is needed for the 80MB model
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: JAVA_OPTS
+        value: -Xmx512m
+    # Render will automatically detect the Dockerfile in the root
