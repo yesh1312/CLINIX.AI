@@ -119,24 +119,20 @@ public class MRIAnalysisService {
 
         validateImageFile(imageFile);
 
-        // Read the image file into a byte array once, so it can be used for both ONNX and LLM processing
+        // Read the image file into a byte array once
         byte[] imageBytes = imageFile.getBytes();
 
-        BufferedImage img = ImageIO.read(new ByteArrayInputStream(imageBytes));
-        if (img == null) {
-            throw new IllegalArgumentException("Invalid image file format. Ensure the upload is a valid image.");
-        }
-
-        // 1. Preprocess: Resize to 224x224 and normalize
-        FloatBuffer tensorBuffer = preprocessImage(img);
-
-        // 2. Prepare Input Tensor
         TumorFinding finding = new TumorFinding();
 
         if (useOnnx && session != null) {
-            long[] shape = new long[] { 1, 3, 224, 224 }; // batch, channels, height, width
+            BufferedImage img = ImageIO.read(new ByteArrayInputStream(imageBytes));
+            if (img == null) {
+                throw new IllegalArgumentException("Invalid image file format.");
+            }
+            // 1. Preprocess: Resize to 224x224 and normalize
             FloatBuffer tensorBuffer = preprocessImage(img);
             
+            long[] shape = new long[] { 1, 3, 224, 224 }; // batch, channels, height, width
             try (OnnxTensor inputTensor = OnnxTensor.createTensor(env, tensorBuffer, shape)) {
                 Map<String, OnnxTensor> inputs = Collections.singletonMap("input", inputTensor);
 
