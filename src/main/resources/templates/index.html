@@ -3541,7 +3541,11 @@ Return this exact JSON schema (fill all fields):
 
                 renderResults(ST.analysis, Date.now() - t0);
                 saveHist(ST.analysis, ST.file.name);
-                drawOverlay(ST.analysis.regionHighlight, ST.analysis.tumorDetected);
+                
+                // Add 100ms delay to ensure DOM and layout have settled before drawing on canvas
+                setTimeout(() => {
+                    drawOverlay(ST.analysis.regionHighlight, ST.analysis.tumorDetected);
+                }, 100);
             } catch (err) {
                 document.getElementById('rBadge').textContent = 'Error';
                 document.getElementById('rBody').innerHTML = `<div class="errbox">Analysis failed: ${esc(err.message)}</div>`;
@@ -3875,17 +3879,29 @@ Return this exact JSON schema (fill all fields):
 
         /* ── CANVAS OVERLAY ── */
         function drawOverlay(rh, isTumor) {
+            console.log("CLINIX.AI: Initiating drawOverlay", { isTumor, rh });
             const img = document.getElementById('previmg');
             const cv = document.getElementById('prevcanvas');
-            if (!img || !cv) return;
+            if (!img || !cv) {
+                console.warn("CLINIX.AI: Missing DOM elements for overlay");
+                return;
+            }
             const go = () => {
-                cv.width = img.naturalWidth || img.offsetWidth || 224;
-                cv.height = img.naturalHeight || img.offsetHeight || 224;
-                cv.style.width = img.offsetWidth + 'px';
-                cv.style.height = img.offsetHeight + 'px';
+                const w = img.naturalWidth || img.offsetWidth || 224;
+                const h = img.naturalHeight || img.offsetHeight || 224;
+                cv.width = w;
+                cv.height = h;
+                cv.style.width = (img.offsetWidth || w) + 'px';
+                cv.style.height = (img.offsetHeight || h) + 'px';
+                
                 const ctx = cv.getContext('2d');
                 ctx.clearRect(0, 0, cv.width, cv.height);
-                if (!isTumor || !rh) return;
+                
+                if (!isTumor || !rh) {
+                    console.log("CLINIX.AI: Overlay skipped - no detection or highlight data");
+                    return;
+                }
+                console.log("CLINIX.AI: Drawing overlay at", rh.approximateX, rh.approximateY);
                 const cx = ((rh.approximateX || 50) / 100) * cv.width;
                 const cy = ((rh.approximateY || 50) / 100) * cv.height;
                 const r = ((rh.radiusPercent || 18) / 100) * Math.min(cv.width, cv.height);

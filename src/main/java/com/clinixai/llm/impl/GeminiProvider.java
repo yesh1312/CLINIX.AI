@@ -91,10 +91,16 @@ public class GeminiProvider implements LLMProvider {
         }
         
         String rawText = (String) ((Map<String, Object>) ((List<Map<String, Object>>) ((Map<String, Object>) candidates.get(0).get("content")).get("parts")).get(0)).get("text");
+        log.info("Gemini Raw Response: {}", rawText);
         
         // Strip markdown if present
         String jsonText = rawText.replaceAll("```json|```", "").trim();
-        return objectMapper.readValue(jsonText, TumorFinding.class);
+        try {
+            return objectMapper.readValue(jsonText, TumorFinding.class);
+        } catch (Exception e) {
+            log.error("Failed to parse Gemini JSON: {}. Raw text: {}", e.getMessage(), jsonText);
+            throw e;
+        }
     }
 
     @Override
