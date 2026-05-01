@@ -20,4 +20,5 @@ COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "app.jar", "--server.port=${PORT:-8080}"]
+# Use shell form to ensure environment variable expansion for $PORT
+ENTRYPOINT java -jar app.jar --server.port=${PORT:-8080}
