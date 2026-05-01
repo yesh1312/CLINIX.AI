@@ -13,6 +13,7 @@ import com.clinixai.repository.HistoryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -46,6 +47,9 @@ public class MRIAnalysisService {
     private OrtSession session;
     private final Map<String, TumorFinding> lastFindings = new java.util.concurrent.ConcurrentHashMap<>();
 
+    @Value("${clinixai.analysis.use-onnx:true}")
+    private boolean useOnnx;
+
     // The order of classes usually imported by PyTorch ImageFolder
     // Assuming: 0=Glioma, 1=Meningioma, 2=no_tumor, 3=Pituitary
     // The exact names depend on the dataset folder structure, but usually
@@ -54,6 +58,10 @@ public class MRIAnalysisService {
 
     @PostConstruct
     public void init() {
+        if (!useOnnx) {
+            log.info("ONNX analysis is disabled via configuration. Running in LLM-only mode.");
+            return;
+        }
         try {
             env = OrtEnvironment.getEnvironment();
 
@@ -123,14 +131,17 @@ public class MRIAnalysisService {
         FloatBuffer tensorBuffer = preprocessImage(img);
 
         // 2. Prepare Input Tensor
-        long[] shape = new long[] { 1, 3, 224, 224 }; // batch, channels, height, width
         TumorFinding finding = new TumorFinding();
 
-        try (OnnxTensor inputTensor = OnnxTensor.createTensor(env, tensorBuffer, shape)) {
-            Map<String, OnnxTensor> inputs = Collections.singletonMap("input", inputTensor);
+        if (useOnnx && session != null) {
+            long[] shape = new long[] { 1, 3, 224, 224 }; // batch, channels, height, width
+            FloatBuffer tensorBuffer = preprocessImage(img);
+            
+            try (OnnxTensor inputTensor = OnnxTensor.createTensor(env, tensorBuffer, shape)) {
+                Map<String, OnnxTensor> inputs = Collections.singletonMap("input", inputTensor);
 
-            // 3. Run Inference
-            try (OrtSession.Result result = session.run(inputs)) {
+                // 3. Run Inference
+                try (OrtSession.Result result = session.run(inputs)) {
                 float[][] output = (float[][]) result.get(0).getValue();
                 float[] probabilities = softmax(output[0]);
 
@@ -196,7 +207,12 @@ public class MRIAnalysisService {
                 }
                 finding.setDisclaimer(
                         "⚠️ This AI analysis is powered by a local EfficientNet model for academic purposes. Do not use for clinical diagnosis.");
+                }
             }
+        } else {
+            log.info("Skipping local ONNX inference (disabled or session not initialized)");
+            finding.setDisclaimer("⚠️ Analysis powered by Cloud Intelligence (multimodal LLM). For research use only.");
+            finding.setTumorDetected(false); // Default, will be updated by LLM
         }
 
         long processingTime = System.currentTimeMillis() - startTime;
