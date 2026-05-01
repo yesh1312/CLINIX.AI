@@ -247,6 +247,9 @@ public class MRIAnalysisService {
             }
         } catch (Exception e) {
             log.warn("LLM Enhancement failed, falling back to local ONNX only: {}", e.getMessage());
+        } finally {
+            // Hint GC to clean up image buffers and tensor data as soon as possible
+            System.gc();
         }
         // -------------------------
 
