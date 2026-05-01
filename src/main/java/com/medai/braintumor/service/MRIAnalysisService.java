@@ -119,20 +119,33 @@ public class MRIAnalysisService {
 
         validateImageFile(imageFile);
 
-        // Read the image file into a byte array once
+        // Read the image file into a byte array
         byte[] imageBytes = imageFile.getBytes();
+        
+        // ALWAYS resize the image to a manageable size (512px) before processing or sending to AI
+        // This prevents memory crashes and timeouts on Render's free tier.
+        BufferedImage originalImg = ImageIO.read(new ByteArrayInputStream(imageBytes));
+        if (originalImg == null) {
+            throw new IllegalArgumentException("Invalid image file format.");
+        }
+        
+        BufferedImage resizedImg = new BufferedImage(512, 512, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = resizedImg.createGraphics();
+        g.drawImage(originalImg, 0, 0, 512, 512, null);
+        g.dispose();
+        
+        // Convert back to bytes for LLM
+        java.io.ByteArrayOutputStream baos = new java.io.ByteArrayOutputStream();
+        ImageIO.write(resizedImg, "jpg", baos);
+        byte[] processedImageBytes = baos.toByteArray();
 
         TumorFinding finding = new TumorFinding();
 
         if (useOnnx && session != null) {
-            BufferedImage img = ImageIO.read(new ByteArrayInputStream(imageBytes));
-            if (img == null) {
-                throw new IllegalArgumentException("Invalid image file format.");
-            }
-            // 1. Preprocess: Resize to 224x224 and normalize
-            FloatBuffer tensorBuffer = preprocessImage(img);
+            // Preprocess for ONNX (224x224)
+            FloatBuffer tensorBuffer = preprocessImage(resizedImg);
             
-            long[] shape = new long[] { 1, 3, 224, 224 }; // batch, channels, height, width
+            long[] shape = new long[] { 1, 3, 224, 224 }; 
             try (OnnxTensor inputTensor = OnnxTensor.createTensor(env, tensorBuffer, shape)) {
                 Map<String, OnnxTensor> inputs = Collections.singletonMap("input", inputTensor);
 
@@ -220,7 +233,7 @@ public class MRIAnalysisService {
                 log.info("Enhancing analysis with LLM Provider: {}", provider.getName());
                 // Pass ONNX class name so MockProvider can use it for more accurate enrichment
                 String onnxClassName = finding.getTumorClass() != null ? finding.getTumorClass() : (finding.getLikelyDiagnosis() != null ? finding.getLikelyDiagnosis() : "unknown");
-                TumorFinding enhancedFinding = provider.analyzeMRI(imageBytes, conversationContext, onnxClassName);
+                TumorFinding enhancedFinding = provider.analyzeMRI(processedImageBytes, conversationContext, onnxClassName);
 
                 // Merge: LLM detection status always wins (it can flip both ways)
                 finding.setTumorDetected(enhancedFinding.isTumorDetected());
