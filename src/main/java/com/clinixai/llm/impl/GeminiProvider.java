@@ -50,7 +50,9 @@ public class GeminiProvider implements LLMProvider {
         STRICT SPATIAL ACCURACY: Ensure regionHighlight coordinates (approximateX, approximateY) correspond precisely to the lesion's center point (0-100 scale).""";
 
     public GeminiProvider(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl("https://generativelanguage.googleapis.com").build();
+        this.webClient = webClientBuilder
+            .baseUrl("https://generativelanguage.googleapis.com")
+            .build();
     }
 
     @Override
@@ -75,7 +77,7 @@ public class GeminiProvider implements LLMProvider {
         );
 
         String result = webClient.post()
-            .uri(uriBuilder -> uriBuilder.path("/v1beta/models/gemini-1.5-flash:generateContent")
+            .uri(uriBuilder -> uriBuilder.path("/v1/models/gemini-1.5-flash:generateContent")
                 .queryParam("key", apiKey)
                 .build())
             .bodyValue(requestBody)
@@ -114,7 +116,7 @@ public class GeminiProvider implements LLMProvider {
         );
 
         String result = webClient.post()
-            .uri(uriBuilder -> uriBuilder.path("/v1beta/models/gemini-1.5-flash:generateContent")
+            .uri(uriBuilder -> uriBuilder.path("/v1/models/gemini-1.5-flash:generateContent")
                 .queryParam("key", apiKey)
                 .build())
             .bodyValue(requestBody)
