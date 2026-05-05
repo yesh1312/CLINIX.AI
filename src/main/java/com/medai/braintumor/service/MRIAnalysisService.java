@@ -272,6 +272,11 @@ public class MRIAnalysisService {
             }
         } catch (Exception e) {
             log.warn("LLM Enhancement failed, falling back to local ONNX only: {}", e.getMessage());
+            finding.setAdditionalNotes("⚠️ Cloud AI Analysis failed: " + e.getMessage() + ". Results shown are from local ONNX model fallback.");
+            if (!useOnnx) {
+                finding.setLikelyDiagnosis("Analysis Error (Cloud AI Offline)");
+                finding.setDisclaimer("⚠️ Both Cloud AI and Local ONNX are unavailable or failed. Please check server logs.");
+            }
         } finally {
             // Hint GC to clean up image buffers and tensor data as soon as possible
             System.gc();
