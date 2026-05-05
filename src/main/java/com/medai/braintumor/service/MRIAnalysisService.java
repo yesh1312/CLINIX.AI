@@ -112,8 +112,8 @@ public class MRIAnalysisService {
             String sessionId, User user)
             throws Exception {
         System.err.println("DEBUG: Received analysis request for file: " + imageFile.getOriginalFilename());
-        if (session == null) {
-            throw new IllegalStateException("ONNX Session is not initialized. Check server logs for startup errors.");
+        if (useOnnx && session == null) {
+            throw new IllegalStateException("ONNX Session is not initialized but use-onnx is set to true. Check server logs for startup errors.");
         }
         long startTime = System.currentTimeMillis();
 

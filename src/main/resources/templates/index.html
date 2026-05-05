@@ -3533,7 +3533,15 @@ Return this exact JSON schema (fill all fields):
                 });
 
                 if (!response.ok) {
-                    throw new Error(`Backend Error: ${response.status}`);
+                    let errMsg = `Backend Error: ${response.status}`;
+                    try {
+                        const errData = await response.json();
+                        if (errData.error) errMsg = errData.error;
+                        else if (errData.message) errMsg = errData.message;
+                    } catch (e) {
+                        // Fallback to default message if JSON parsing fails
+                    }
+                    throw new Error(errMsg);
                 }
 
                 const data = await response.json();
