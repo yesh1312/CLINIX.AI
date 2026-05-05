@@ -62,7 +62,7 @@ public class GeminiProvider implements LLMProvider {
         }
 
         String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-        String prompt = SYSTEM_PROMPT + "\\n\\nContext: " + (context != null ? context : "Analyze this scan.") + "\\n\\nONNX Classifier Result: " + onnxResult;
+        String prompt = SYSTEM_PROMPT + "\n\nContext: " + (context != null ? context : "Analyze this scan.") + "\n\nONNX Classifier Result: " + onnxResult;
 
         Map<String, Object> requestBody = Map.of(
             "contents", List.of(

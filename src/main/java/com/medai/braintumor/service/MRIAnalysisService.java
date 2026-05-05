@@ -156,8 +156,9 @@ public class MRIAnalysisService {
 
                 int predictedClass = argmax(probabilities);
                 float confidence = probabilities[predictedClass];
-
                 String className = CLASSES[predictedClass];
+
+                log.info("ONNX Inference: Class={}, Confidence={}, All Probabilities={}", className, confidence, Arrays.toString(probabilities));
 
                 finding.setImageQuality("Good");
                 finding.setConfidenceScore((int) (confidence * 100));
@@ -235,8 +236,10 @@ public class MRIAnalysisService {
                 String onnxClassName = finding.getTumorClass() != null ? finding.getTumorClass() : (finding.getLikelyDiagnosis() != null ? finding.getLikelyDiagnosis() : "unknown");
                 TumorFinding enhancedFinding = provider.analyzeMRI(processedImageBytes, conversationContext, onnxClassName);
 
-                // Merge: LLM detection status always wins (it can flip both ways)
-                finding.setTumorDetected(enhancedFinding.isTumorDetected());
+                // Merge: Detection is positive if EITHER ONNX or LLM detects it (Safety first)
+                if (enhancedFinding.isTumorDetected()) {
+                    finding.setTumorDetected(true);
+                }
 
                 if (enhancedFinding.getLikelyDiagnosis() != null) {
                     finding.setLikelyDiagnosis(enhancedFinding.getLikelyDiagnosis());
